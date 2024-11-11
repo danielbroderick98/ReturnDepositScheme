@@ -21,6 +21,7 @@ public class ReturnDepositSchemeApp {
             DepositMachineLocatorGUI gui = new DepositMachineLocatorGUI();
             gui.setVisible(true);
         });
+        System.out.print("");
       
     }
 }
