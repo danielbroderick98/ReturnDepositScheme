@@ -118,6 +118,10 @@ public class Homepage extends javax.swing.JFrame {
 
     private void locatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locatorButtonActionPerformed
         // TODO add your handling code here:
+         new DepositMachineLocatorGUI().setVisible(true);  // Open Profile page
+        
+        // Close the Homepage window
+        setVisible(false);
     }//GEN-LAST:event_locatorButtonActionPerformed
 
     /**
