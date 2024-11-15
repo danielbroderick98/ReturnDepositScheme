@@ -27,7 +27,7 @@
               <EmptySpace pref="124" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="sendFeedback" min="-2" max="-2" attributes="0"/>
-                  <Component id="userFeedbackInput1" min="-2" pref="364" max="-2" attributes="0"/>
+                  <Component id="userFeedbackInput" min="-2" pref="364" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
           </Group>
@@ -37,7 +37,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="81" max="32767" attributes="0"/>
-              <Component id="userFeedbackInput1" min="-2" pref="197" max="-2" attributes="0"/>
+              <Component id="userFeedbackInput" min="-2" pref="197" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="sendFeedback" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -46,7 +46,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="java.awt.TextArea" name="userFeedbackInput1">
+    <Component class="java.awt.TextArea" name="userFeedbackInput">
       <Properties>
         <Property name="text" type="java.lang.String" value="Please Enter Your Feedback..."/>
       </Properties>
