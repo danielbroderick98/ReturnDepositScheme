@@ -30,15 +30,15 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
         homeBtn = new javax.swing.JButton();
         feedbackBtn = new javax.swing.JButton();
         depositBTN = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        machineLocatorBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        entEirTxtField = new javax.swing.JTextField();
+        entLatTxtField = new javax.swing.JTextField();
+        entLongTxtField = new javax.swing.JTextField();
+        entLocationBtn = new javax.swing.JButton();
+        entEirLbl = new javax.swing.JLabel();
+        entLonLat = new javax.swing.JLabel();
+        entLatLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,10 +65,10 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
         depositBTN.setForeground(new java.awt.Color(255, 255, 255));
         depositBTN.setText("Deposit");
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Machine Locator");
+        machineLocatorBtn.setBackground(new java.awt.Color(51, 51, 51));
+        machineLocatorBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        machineLocatorBtn.setForeground(new java.awt.Color(255, 255, 255));
+        machineLocatorBtn.setText("Machine Locator");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,8 +82,8 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(depositBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addComponent(machineLocatorBtn)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,47 +93,47 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
                     .addComponent(homeBtn)
                     .addComponent(feedbackBtn)
                     .addComponent(depositBTN)
-                    .addComponent(jButton1))
+                    .addComponent(machineLocatorBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        entEirTxtField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
 
-        jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        entLatTxtField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        entLatTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                entLatTxtFieldActionPerformed(evt);
             }
         });
 
-        jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        entLongTxtField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        entLongTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                entLongTxtFieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("ENTER");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        entLocationBtn.setText("ENTER");
+        entLocationBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                entLocationBtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ENTER EIRCODE");
+        entEirLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        entEirLbl.setForeground(new java.awt.Color(255, 255, 255));
+        entEirLbl.setText("ENTER EIRCODE");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ENTER LONGITUDE");
+        entLonLat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        entLonLat.setForeground(new java.awt.Color(255, 255, 255));
+        entLonLat.setText("ENTER LONGITUDE");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ENTER LATITUDE");
+        entLatLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        entLatLbl.setForeground(new java.awt.Color(255, 255, 255));
+        entLatLbl.setText("ENTER LATITUDE");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,37 +144,37 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(entEirLbl)
+                            .addComponent(entLonLat)
+                            .addComponent(entLatLbl))
                         .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(entLongTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(entLatTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(entEirTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(245, 245, 245)
-                        .addComponent(jButton2)))
-                .addContainerGap(205, Short.MAX_VALUE))
+                        .addComponent(entLocationBtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(entEirTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entEirLbl))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(entLatTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entLatLbl))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(entLongTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entLonLat))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addComponent(entLocationBtn)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,8 +184,8 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -193,8 +193,8 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -205,34 +205,34 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_homeBtnActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void entLongTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entLongTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_entLongTxtFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void entLatTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entLatTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_entLatTxtFieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void entLocationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entLocationBtnActionPerformed
         // Create and display the DepositMachines form
         DepositMachines depositMachinesForm = new DepositMachines();
         depositMachinesForm.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_entLocationBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton depositBTN;
+    private javax.swing.JLabel entEirLbl;
+    private javax.swing.JTextField entEirTxtField;
+    private javax.swing.JLabel entLatLbl;
+    private javax.swing.JTextField entLatTxtField;
+    private javax.swing.JButton entLocationBtn;
+    private javax.swing.JLabel entLonLat;
+    private javax.swing.JTextField entLongTxtField;
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton machineLocatorBtn;
     // End of variables declaration//GEN-END:variables
 }
