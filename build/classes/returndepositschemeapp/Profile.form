@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="confirmProfile" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="profileHomeLabel" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="profileHomeInput" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="profileEmailLabel" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="profileEmailInput" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="profileSurnameLabel" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="profileSurnameInput" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="profileGenderLabel" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="profileGenderInput" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="profileNameLabel" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="profileNameInput" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="saveName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveGender" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveHomeAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveSurname" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="profileNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="profileNameInput" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="saveName" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="saveEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="profileSurnameInput" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="profileSurnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="profileEmailLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="profileHomeLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="profileEmailInput" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveSurname" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="saveHomeAddress" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="profileHomeInput" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                      <Component id="profileGenderLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="profileGenderInput" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="saveGender" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="confirmProfile" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="java.awt.Button" name="saveGender">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="profileGenderInput">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enter Your Gender..."/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="profileSurnameInput">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enter your Surname..."/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="saveName">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="profileNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Name"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="profileGenderLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gender"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="profileSurnameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Surname"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="profileEmailLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Email Address"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Label" name="profileHomeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Home Address"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="saveSurname">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="profileHomeInput">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enter Your Home Address..."/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="saveEmail">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="profileNameInput">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enter Your Name..."/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="saveHomeAddress">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="profileEmailInput">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enter Your Email Address..."/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="confirmProfile">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="CONFIRM"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmProfileActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

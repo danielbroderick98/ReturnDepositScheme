@@ -18,8 +18,12 @@ public class ReturnDepositSchemeApp {
     public static void main(String[] args) {
         //Initialising the Gui for DepositMachineLocatorGUI
         SwingUtilities.invokeLater(() -> {
-            DepositMachineLocatorGUI gui = new DepositMachineLocatorGUI();
+            Welcome gui = new Welcome();
             gui.setVisible(true);
         });
+<<<<<<< HEAD
+        System.out.print("");
+=======
+>>>>>>> d36bb76537de835ec1b46ee8371e2938bab34291
     }
 }
