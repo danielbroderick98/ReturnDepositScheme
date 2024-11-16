@@ -21,9 +21,6 @@ public class ReturnDepositSchemeApp {
             Welcome gui = new Welcome();
             gui.setVisible(true);
         });
-<<<<<<< HEAD
-        System.out.print("");
-=======
->>>>>>> d36bb76537de835ec1b46ee8371e2938bab34291
+
     }
 }
