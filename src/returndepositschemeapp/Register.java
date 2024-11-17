@@ -48,6 +48,8 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        createUserLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        createUserLabel.setForeground(new java.awt.Color(255, 255, 255));
         createUserLabel.setText("Create User Name");
 
         confirmCreatePasswordInput.setText("Re-Enter Password...");
@@ -61,8 +63,12 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        createPasswordLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        createPasswordLabel.setForeground(new java.awt.Color(255, 255, 255));
         createPasswordLabel.setText("Create Password");
 
+        confirmPasswordLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        confirmPasswordLabel.setForeground(new java.awt.Color(255, 255, 255));
         confirmPasswordLabel.setText("Confirm Password");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -110,7 +116,7 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(confirmCreatePasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(confirmRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,11 +194,6 @@ public class Register extends javax.swing.JFrame {
     private java.awt.Label createPasswordLabel;
     private java.awt.TextField createUserInput;
     private java.awt.Label createUserLabel;
-    private javax.swing.JButton depositBTN1;
-    private javax.swing.JButton feedbackBtn1;
-    private javax.swing.JButton homeBtn1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

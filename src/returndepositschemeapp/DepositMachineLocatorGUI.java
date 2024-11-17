@@ -31,6 +31,7 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
         feedbackBtn = new javax.swing.JButton();
         depositBTN = new javax.swing.JButton();
         machineLocatorBtn = new javax.swing.JButton();
+        profileBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         entEirTxtField = new javax.swing.JTextField();
         entLatTxtField = new javax.swing.JTextField();
@@ -59,31 +60,58 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
         feedbackBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         feedbackBtn.setForeground(new java.awt.Color(255, 255, 255));
         feedbackBtn.setText("Feedback");
+        feedbackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                feedbackBtnActionPerformed(evt);
+            }
+        });
 
         depositBTN.setBackground(new java.awt.Color(51, 51, 51));
         depositBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         depositBTN.setForeground(new java.awt.Color(255, 255, 255));
         depositBTN.setText("Deposit");
+        depositBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositBTNActionPerformed(evt);
+            }
+        });
 
         machineLocatorBtn.setBackground(new java.awt.Color(51, 51, 51));
         machineLocatorBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         machineLocatorBtn.setForeground(new java.awt.Color(255, 255, 255));
         machineLocatorBtn.setText("Machine Locator");
+        machineLocatorBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                machineLocatorBtnActionPerformed(evt);
+            }
+        });
+
+        profileBtn.setBackground(new java.awt.Color(51, 51, 51));
+        profileBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        profileBtn.setForeground(new java.awt.Color(255, 255, 255));
+        profileBtn.setText("Profile");
+        profileBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(feedbackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(depositBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(machineLocatorBtn)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(profileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +121,8 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
                     .addComponent(homeBtn)
                     .addComponent(feedbackBtn)
                     .addComponent(depositBTN)
-                    .addComponent(machineLocatorBtn))
+                    .addComponent(machineLocatorBtn)
+                    .addComponent(profileBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,6 +257,42 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_entLocationBtnActionPerformed
 
+    private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
+        //Setting Feedback visible
+        Feedback feedback = new Feedback();
+        feedback.setVisible(true);
+        
+        //Collapsing current form
+        setVisible(false);
+    }//GEN-LAST:event_feedbackBtnActionPerformed
+
+    private void depositBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositBTNActionPerformed
+        //Setting Deposit Frame visible
+        DepositMenuFrame deposit = new DepositMenuFrame();
+        deposit.setVisible(true);
+        
+        //Collapsing current form
+        setVisible(false);        
+    }//GEN-LAST:event_depositBTNActionPerformed
+
+    private void machineLocatorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_machineLocatorBtnActionPerformed
+        //Setting Deposit Machin Gui visible
+        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
+        machines.setVisible(true);
+        
+        //Collapsing current form
+        setVisible(false);    
+    }//GEN-LAST:event_machineLocatorBtnActionPerformed
+
+    private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
+        //Setting the profile visible
+        Profile profile = new Profile();
+        profile.setVisible(true);
+        
+        //Collapsing current form
+        setVisible(false); 
+    }//GEN-LAST:event_profileBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton depositBTN;
@@ -243,5 +308,6 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton machineLocatorBtn;
+    private javax.swing.JButton profileBtn;
     // End of variables declaration//GEN-END:variables
 }

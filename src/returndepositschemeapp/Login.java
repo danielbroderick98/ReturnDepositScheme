@@ -50,10 +50,16 @@ public class Login extends javax.swing.JFrame {
 
         emailLoginInput.setText("Enter Email Adress...");
 
+        confirmPasswordLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        confirmPasswordLogin.setForeground(new java.awt.Color(255, 255, 255));
         confirmPasswordLogin.setText("Confirm Password");
 
+        passwordLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        passwordLogin.setForeground(new java.awt.Color(255, 255, 255));
         passwordLogin.setText("Password");
 
+        emailLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        emailLogin.setForeground(new java.awt.Color(255, 255, 255));
         emailLogin.setText("Email Address");
 
         confirmPasswordLoginInput.setText("Re-Enter Password...");
@@ -85,7 +91,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(81, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailLoginInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
