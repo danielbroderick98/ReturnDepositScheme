@@ -42,7 +42,7 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
         homeBtn.setBackground(new java.awt.Color(51, 51, 51));
@@ -97,7 +97,7 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
         entEirTxtField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
@@ -202,7 +202,12 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
-        // TODO add your handling code here:
+        //Setting hompeage visible
+        Homepage home = new Homepage();
+        home.setVisible(true);
+        
+        //Collapsing current form
+        setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void entLongTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entLongTxtFieldActionPerformed
@@ -216,7 +221,11 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
     private void entLocationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entLocationBtnActionPerformed
         // Create and display the DepositMachines form
         DepositMachines depositMachinesForm = new DepositMachines();
+        
+        //Setting the visibility of deposit machine gui to be not visible
         depositMachinesForm.setVisible(true);
+        
+        setVisible(false);
     }//GEN-LAST:event_entLocationBtnActionPerformed
 
 
