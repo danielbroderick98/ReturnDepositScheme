@@ -132,6 +132,9 @@ public class Homepage extends javax.swing.JFrame {
 
     private void calculatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatorButtonActionPerformed
         // TODO add your handling code here:
+        new DepositMenuFrame().setVisible(true);
+        setVisible(false);
+        
     }//GEN-LAST:event_calculatorButtonActionPerformed
 
     private void locatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locatorButtonActionPerformed
