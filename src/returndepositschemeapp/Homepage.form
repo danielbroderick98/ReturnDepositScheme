@@ -24,73 +24,100 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="calculatorButton" min="-2" pref="158" max="-2" attributes="0"/>
-                      <EmptySpace pref="101" max="32767" attributes="0"/>
-                      <Component id="locatorButton" min="-2" pref="158" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="feedbackButton" min="-2" pref="158" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="profileButton" min="-2" pref="158" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="profileButton" min="-2" pref="81" max="-2" attributes="0"/>
-                  <Component id="feedbackButton" min="-2" pref="81" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="calculatorButton" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                  <Component id="locatorButton" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="java.awt.Button" name="profileButton">
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
-        <Property name="label" type="java.lang.String" value="PROFILE"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="java.awt.Button" name="calculatorButton">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="CALCULATOR"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calculatorButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="java.awt.Button" name="locatorButton">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="MACHINE LOCATOR"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locatorButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="java.awt.Button" name="feedbackButton">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="FEEDBACK"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="feedbackButtonActionPerformed"/>
-      </Events>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="locatorButton" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="feedbackButton" min="-2" pref="158" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="87" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="calculatorButton" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="profileButton" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="calculatorButton" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="feedbackButton" min="-2" pref="81" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="locatorButton" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="profileButton" min="-2" pref="81" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="java.awt.Button" name="feedbackButton">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="FEEDBACK"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="feedbackButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="java.awt.Button" name="locatorButton">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="MACHINE LOCATOR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locatorButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="java.awt.Button" name="calculatorButton">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="CALCULATOR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calculatorButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="java.awt.Button" name="profileButton">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="PROFILE"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
