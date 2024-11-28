@@ -129,12 +129,28 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmLoginActionPerformed
-        // TODO add your handling code here:
-        // Navigate to the Homepage when the LOGIN button is clicked
-        new Homepage().setVisible(true);
-    
-        // Close the Login window
-        this.setVisible(false);
+        // TODO add your handling code here:                                         
+        // Get the email and password input from the user
+        String email = emailLoginInput.getText();
+        String password = passwordLoginInput.getText();
+
+        // Check Validation
+        if (email.isEmpty() || password.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please enter email and password.");
+            return;
+        }
+
+        // Hardcoded email and password for test
+        //String validEmail = "Darren@gmail.com";
+        //String validPassword = "123456";
+        // Check if entered email and password match the hardcoded values
+        if (UserManager.authenticate(email, password)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
+            new Homepage().setVisible(true);
+            this.setVisible(false);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid email or password.");
+        }
     }//GEN-LAST:event_confirmLoginActionPerformed
 
     /**
@@ -165,10 +181,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 

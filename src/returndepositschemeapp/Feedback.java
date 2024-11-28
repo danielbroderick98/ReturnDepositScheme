@@ -4,16 +4,22 @@
  */
 package returndepositschemeapp;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Darren
  */
 public class Feedback extends javax.swing.JFrame {
 
+    private final ArrayList<String> feedbackList;
+
     /**
      * Creates new form Feedback
      */
     public Feedback() {
+        feedbackList = new ArrayList<>(); // Initialize the ArrayList
         initComponents();
     }
 
@@ -35,6 +41,9 @@ public class Feedback extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         userFeedbackInput = new java.awt.TextArea();
         sendFeedback = new java.awt.Button();
+        displayFeedback = new java.awt.Button();
+        deleteFeedback = new java.awt.Button();
+        searchFeedback = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +131,11 @@ public class Feedback extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jPanel2ComponentAdded(evt);
+            }
+        });
 
         userFeedbackInput.setText("Please Enter Your Feedback...");
 
@@ -132,18 +146,47 @@ public class Feedback extends javax.swing.JFrame {
             }
         });
 
+        displayFeedback.setLabel("Display Feedback");
+        displayFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayFeedbackActionPerformed(evt);
+            }
+        });
+
+        deleteFeedback.setLabel("Delete Feedback");
+        deleteFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteFeedbackActionPerformed(evt);
+            }
+        });
+
+        searchFeedback.setLabel("Search Feedback");
+        searchFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFeedbackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(displayFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(searchFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(deleteFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
-                        .addComponent(sendFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(134, 134, 134)
+                        .addComponent(userFeedbackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(userFeedbackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(291, 291, 291)
+                        .addComponent(sendFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -151,9 +194,14 @@ public class Feedback extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(userFeedbackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sendFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(displayFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +213,7 @@ public class Feedback extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 19, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -184,18 +232,28 @@ public class Feedback extends javax.swing.JFrame {
 
     private void sendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendFeedbackActionPerformed
         // TODO add your handling code here:
-        // Navigate to the Homepage
-        new Homepage().setVisible(true);
-        
-        // Close the Login window
-        setVisible(false);
+        String feedback = userFeedbackInput.getText();
+
+        if (feedback.isEmpty() || feedback.equalsIgnoreCase("Please Enter Your Feedback...")) {
+            JOptionPane.showMessageDialog(null, "Please enter your feedback before submitting.");
+            return;
+        }
+
+        // Add feedback to the ArrayList
+        feedbackList.add(feedback);
+
+        // Show success message
+        JOptionPane.showMessageDialog(null, "Thank you for your feedback!");
+
+        // Clear the input field
+        userFeedbackInput.setText("Please Enter Your Feedback...");
     }//GEN-LAST:event_sendFeedbackActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         //Setting hompeage visible
         Homepage home = new Homepage();
         home.setVisible(true);
-        
+
         //Collapsing current form
         setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
@@ -204,7 +262,7 @@ public class Feedback extends javax.swing.JFrame {
         //Setting Feedback visible
         Feedback feedback = new Feedback();
         feedback.setVisible(true);
-        
+
         //Collapsing current form
         setVisible(false);
     }//GEN-LAST:event_feedbackBtnActionPerformed
@@ -213,16 +271,16 @@ public class Feedback extends javax.swing.JFrame {
         //Setting Deposit Frame visible
         DepositMenuFrame deposit = new DepositMenuFrame();
         deposit.setVisible(true);
-        
+
         //Collapsing current form
-        setVisible(false); 
+        setVisible(false);
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Setting Deposit Machin Gui visible
         DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
         machines.setVisible(true);
-        
+
         //Collapsing current form
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -231,10 +289,70 @@ public class Feedback extends javax.swing.JFrame {
         //Setting the profile visible
         Profile profile = new Profile();
         profile.setVisible(true);
-        
+
         //Collapsing current form
-        setVisible(false); 
+        setVisible(false);
     }//GEN-LAST:event_profileBtnActionPerformed
+
+    private void jPanel2ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel2ComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2ComponentAdded
+
+    private void displayFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayFeedbackActionPerformed
+        // TODO add your handling code here:
+        // Display all feedback
+        if (feedbackList.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No feedback available.");
+        } else {
+            StringBuilder feedbackString = new StringBuilder();
+            for (String feedback : feedbackList) {
+                feedbackString.append(feedback).append("\n\n");
+            }
+            JOptionPane.showMessageDialog(this, feedbackString.toString());
+
+        }
+    }//GEN-LAST:event_displayFeedbackActionPerformed
+
+    private void deleteFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteFeedbackActionPerformed
+        // TODO add your handling code here:
+        // Get the feedback to delete (for example, email or part of the feedback)
+        String feedbackToDelete = JOptionPane.showInputDialog(this, "Enter feedback or email to delete:");
+
+        if (feedbackToDelete != null && !feedbackToDelete.isEmpty()) {
+            boolean removed = feedbackList.removeIf(feedback -> feedback.contains(feedbackToDelete));
+
+            if (removed) {
+                JOptionPane.showMessageDialog(this, "Feedback deleted successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No matching feedback found to delete.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please enter feedback to delete.");
+        }
+    }//GEN-LAST:event_deleteFeedbackActionPerformed
+
+    private void searchFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFeedbackActionPerformed
+        // TODO add your handling code here:
+        // Get the search input (you may want to ask the user for a keyword or email)
+        String searchTerm = JOptionPane.showInputDialog(this, "Enter feedback or email to search:");
+
+        if (searchTerm != null && !searchTerm.isEmpty()) {
+            // Search through the feedback list for the term
+            boolean found = false;
+            for (String feedback : feedbackList) {
+                if (feedback.contains(searchTerm)) {
+                    JOptionPane.showMessageDialog(this, "Feedback found: " + feedback);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                JOptionPane.showMessageDialog(this, "No matching feedback found.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please enter a search term.");
+        }
+    }//GEN-LAST:event_searchFeedbackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,21 +382,22 @@ public class Feedback extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Feedback().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Feedback().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button deleteFeedback;
     private javax.swing.JButton depositBTN;
+    private java.awt.Button displayFeedback;
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton profileBtn;
+    private java.awt.Button searchFeedback;
     private java.awt.Button sendFeedback;
     private java.awt.TextArea userFeedbackInput;
     // End of variables declaration//GEN-END:variables
