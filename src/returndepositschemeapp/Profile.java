@@ -7,7 +7,6 @@ package returndepositschemeapp;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Darren
  */
 public class Profile extends javax.swing.JFrame {
@@ -17,21 +16,17 @@ public class Profile extends javax.swing.JFrame {
      */
     public Profile() {
         initComponents();
+        // Calls method
         loadUserProfile();
     }
 
+    // Populates users information in 'Profile' window
     private void loadUserProfile() {
         User currentUser = UserManager.getCurrentUser();
-        if (currentUser != null) {
-            profileNameInput.setText(currentUser.getName());
-            profileSurnameInput.setText(currentUser.getSurname());
-            profileHomeInput.setText(currentUser.getHomeAddress());
-            profileEmailInput.setText(currentUser.getEmail());
-        } else {
-            JOptionPane.showMessageDialog(this, "No user is currently logged in.");
-            new Register().setVisible(true);
-            this.dispose();
-        }
+        profileNameInput.setText(currentUser.getName());
+        profileSurnameInput.setText(currentUser.getSurname());
+        profileHomeInput.setText(currentUser.getHomeAddress());
+        profileEmailInput.setText(currentUser.getEmail());
     }
 
     /**
@@ -256,13 +251,14 @@ public class Profile extends javax.swing.JFrame {
 
     private void saveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveProfileActionPerformed
         // TODO add your handling code here:
-        // Save the updated profile information
+        // Save updated profile information
         String name = profileNameInput.getText();
         String surname = profileSurnameInput.getText();
         String homeAddress = profileHomeInput.getText();
         String email = profileEmailInput.getText();
 
         // Validate input
+        // Will add more
         if (name.isEmpty() || surname.isEmpty() || homeAddress.isEmpty() || email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill out all fields.");
             return;
@@ -270,9 +266,13 @@ public class Profile extends javax.swing.JFrame {
 
         // Update current user details
         UserManager.updateCurrentUser(name, surname, homeAddress, email);
-        UserManager.saveUsersToCSV(); // Save changes to CSV
-        JOptionPane.showMessageDialog(this, "Profile updated successfully!");
+        // Call saveUsersToCSV method to update details
+        UserManager.saveUsersToCSV();
+        // Update message
+        JOptionPane.showMessageDialog(this, "Profile updated");
+        // Show Homepage
         new Homepage().setVisible(true);
+        // Close Profile page
         this.setVisible(false);
     }//GEN-LAST:event_saveProfileActionPerformed
 
@@ -281,7 +281,7 @@ public class Profile extends javax.swing.JFrame {
         Homepage home = new Homepage();
         home.setVisible(true);
 
-        //Collapsing current form
+        // Set invisible
         setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
 
@@ -290,34 +290,34 @@ public class Profile extends javax.swing.JFrame {
         Feedback feedback = new Feedback();
         feedback.setVisible(true);
 
-        //Collapsing current form
+        // Set invisible
         setVisible(false);
     }//GEN-LAST:event_feedbackBtnActionPerformed
 
     private void depositBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositBTNActionPerformed
-        //Setting Deposit Frame visible
+        //Setting Deposit page visible
         DepositMenuFrame deposit = new DepositMenuFrame();
         deposit.setVisible(true);
 
-        //Collapsing current form
+        // Set invisible
         setVisible(false);
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Setting Deposit Machin Gui visible
+        //Setting Deposit Machine page visible
         DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
         machines.setVisible(true);
 
-        //Collapsing current form
+        // Set invisible
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
-        //Setting the profile visible
+        //Setting profile visible
         Profile profile = new Profile();
         profile.setVisible(true);
 
-        //Collapsing current form
+        // Set invisible
         setVisible(false);
     }//GEN-LAST:event_profileBtnActionPerformed
 

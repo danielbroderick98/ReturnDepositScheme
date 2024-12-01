@@ -196,15 +196,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="displayFeedback" min="-2" pref="131" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Component id="searchFeedback" min="-2" pref="131" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="deleteFeedback" min="-2" pref="131" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -215,8 +206,16 @@
                           <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
                           <Component id="sendFeedback" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="searchFeedback" min="-2" pref="131" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="deleteFeedback" min="-2" pref="131" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="viewAllFeedback" min="-2" pref="131" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -229,7 +228,7 @@
                   <Component id="sendFeedback" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="displayFeedback" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="viewAllFeedback" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="deleteFeedback" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="searchFeedback" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -252,12 +251,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendFeedbackActionPerformed"/>
           </Events>
         </Component>
-        <Component class="java.awt.Button" name="displayFeedback">
+        <Component class="java.awt.Button" name="viewAllFeedback">
           <Properties>
-            <Property name="label" type="java.lang.String" value="Display Feedback"/>
+            <Property name="label" type="java.lang.String" value="View All Feedback"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="displayFeedbackActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAllFeedbackActionPerformed"/>
           </Events>
         </Component>
         <Component class="java.awt.Button" name="deleteFeedback">

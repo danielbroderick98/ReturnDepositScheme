@@ -5,7 +5,6 @@
 package returndepositschemeapp;
 
 /**
- *
  * @author Darren
  */
 //variables
@@ -24,7 +23,7 @@ public class User {
         this.password = password;
     }
 
-    // Getters and setters for all requested fields
+    // Getters and setters for all request fields
     public String getUsername() {
         return username;
     }
@@ -53,11 +52,11 @@ public class User {
         this.surname = surname;
     }
 
-    public String getHomeAddress() {  
+    public String getHomeAddress() {
         return homeAddress;
     }
 
-    public void setHomeAddress(String homeAddress) {  
+    public void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
     }
 

@@ -4,7 +4,8 @@
  */
 package returndepositschemeapp;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,14 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class Feedback extends javax.swing.JFrame {
 
-    private final ArrayList<String> feedbackList;
-
     /**
      * Creates new form Feedback
      */
     public Feedback() {
-        feedbackList = new ArrayList<>(); // Initialize the ArrayList
         initComponents();
+        // Call method that ensures we have a CSV file on start up
+        createCSVIfNotExist();
     }
 
     /**
@@ -41,7 +41,7 @@ public class Feedback extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         userFeedbackInput = new java.awt.TextArea();
         sendFeedback = new java.awt.Button();
-        displayFeedback = new java.awt.Button();
+        viewAllFeedback = new java.awt.Button();
         deleteFeedback = new java.awt.Button();
         searchFeedback = new java.awt.Button();
 
@@ -146,10 +146,10 @@ public class Feedback extends javax.swing.JFrame {
             }
         });
 
-        displayFeedback.setLabel("Display Feedback");
-        displayFeedback.addActionListener(new java.awt.event.ActionListener() {
+        viewAllFeedback.setLabel("View All Feedback");
+        viewAllFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                displayFeedbackActionPerformed(evt);
+                viewAllFeedbackActionPerformed(evt);
             }
         });
 
@@ -172,22 +172,21 @@ public class Feedback extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(displayFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(searchFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(deleteFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(userFeedbackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(291, 291, 291)
-                        .addComponent(sendFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(sendFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(searchFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(deleteFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(viewAllFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +197,7 @@ public class Feedback extends javax.swing.JFrame {
                 .addComponent(sendFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(displayFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewAllFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
@@ -230,67 +229,63 @@ public class Feedback extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Method to send Feedback
     private void sendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendFeedbackActionPerformed
         // TODO add your handling code here:
+        // Get users feedback from field
         String feedback = userFeedbackInput.getText();
-
-        if (feedback.isEmpty() || feedback.equalsIgnoreCase("Please Enter Your Feedback...")) {
-            JOptionPane.showMessageDialog(null, "Please enter your feedback before submitting.");
-            return;
+        // Ensure feedback is not empty
+        if (!feedback.isEmpty()) {
+            // If feedback is not empty, request user email address
+            String userEmail = JOptionPane.showInputDialog(this, "Enter your email: ");
+            if (!userEmail.isEmpty()) {
+                saveFeedbackToCSV(userEmail, feedback);
+                JOptionPane.showMessageDialog(this, "Feedback saved!");
+                //Setting text to nothing, however considering adding text
+                userFeedbackInput.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please enter a Valid email");
+            }
         }
-
-        // Add feedback to the ArrayList
-        feedbackList.add(feedback);
-
-        // Show success message
-        JOptionPane.showMessageDialog(null, "Thank you for your feedback!");
-
-        // Clear the input field
-        userFeedbackInput.setText("Please Enter Your Feedback...");
     }//GEN-LAST:event_sendFeedbackActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
-        //Setting hompeage visible
+        // Setting hompeage visible
         Homepage home = new Homepage();
         home.setVisible(true);
-
-        //Collapsing current form
+        // Setting Feedback invisible
         setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
-        //Setting Feedback visible
+        // Setting Feedback visible
         Feedback feedback = new Feedback();
         feedback.setVisible(true);
-
-        //Collapsing current form
+        // Setting Feedback invisible
         setVisible(false);
     }//GEN-LAST:event_feedbackBtnActionPerformed
 
     private void depositBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositBTNActionPerformed
-        //Setting Deposit Frame visible
+        // Setting Deposit visible
         DepositMenuFrame deposit = new DepositMenuFrame();
         deposit.setVisible(true);
-
-        //Collapsing current form
+        // Setting Feedback invisible
         setVisible(false);
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Setting Deposit Machin Gui visible
+        // Setting Locator visible
         DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
         machines.setVisible(true);
-
-        //Collapsing current form
+        // Setting Feedback invisible
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
-        //Setting the profile visible
+        // Setting profile visible
         Profile profile = new Profile();
         profile.setVisible(true);
-
-        //Collapsing current form
+        // Setting Feedback invisible
         setVisible(false);
     }//GEN-LAST:event_profileBtnActionPerformed
 
@@ -298,61 +293,161 @@ public class Feedback extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2ComponentAdded
 
-    private void displayFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayFeedbackActionPerformed
+    //Method to view all Feedback
+    private void viewAllFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllFeedbackActionPerformed
         // TODO add your handling code here:
-        // Display all feedback
-        if (feedbackList.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No feedback available.");
-        } else {
-            StringBuilder feedbackString = new StringBuilder();
+        // Assign variable to the list
+        List<String> feedbackList = getAllFeedbackFromCSV();
+        // Check for entires
+        if (!feedbackList.isEmpty()) {
+            // Added for outputting format
+            StringBuilder formattedFeedback = new StringBuilder();
+            // Iterate through CSV
             for (String feedback : feedbackList) {
-                feedbackString.append(feedback).append("\n\n");
+                // Split into 2 parts - email and feedback
+                String[] part = feedback.split(",", 2);
+                // Append in both parts to the string
+                formattedFeedback.append(part[0]).append(": ").append(part[1]).append("\n\n");
             }
-            JOptionPane.showMessageDialog(this, feedbackString.toString());
-
+            // Impliment toString method and print in JOption
+            JOptionPane.showMessageDialog(this, formattedFeedback.toString());
+        } else {
+            JOptionPane.showMessageDialog(this, "No feedback available.");
         }
-    }//GEN-LAST:event_displayFeedbackActionPerformed
+    }//GEN-LAST:event_viewAllFeedbackActionPerformed
 
+    // Method to delete Feedback
     private void deleteFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteFeedbackActionPerformed
         // TODO add your handling code here:
-        // Get the feedback to delete (for example, email or part of the feedback)
-        String feedbackToDelete = JOptionPane.showInputDialog(this, "Enter feedback or email to delete:");
-
-        if (feedbackToDelete != null && !feedbackToDelete.isEmpty()) {
-            boolean removed = feedbackList.removeIf(feedback -> feedback.contains(feedbackToDelete));
-
-            if (removed) {
-                JOptionPane.showMessageDialog(this, "Feedback deleted successfully.");
-            } else {
-                JOptionPane.showMessageDialog(this, "No matching feedback found to delete.");
-            }
-        } else {
+        // Ask user for a specific feedback they wish to delete
+        String feedbackDelete = JOptionPane.showInputDialog(this, "Enter feedback to delete:");
+        // Give some validation requirments
+        if (feedbackDelete != null && !feedbackDelete.isEmpty()) {
+            // If validation is fulfulled, call method
+            deleteFeedbackFromCSV(feedbackDelete);
+        } else { // If above is not fulfilled, display feedback request again
             JOptionPane.showMessageDialog(this, "Please enter feedback to delete.");
         }
     }//GEN-LAST:event_deleteFeedbackActionPerformed
 
+    // Method to Search Feedback
     private void searchFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFeedbackActionPerformed
         // TODO add your handling code here:
-        // Get the search input (you may want to ask the user for a keyword or email)
-        String searchTerm = JOptionPane.showInputDialog(this, "Enter feedback or email to search:");
+        // Request user to enter a query
+        String searchQuery = JOptionPane.showInputDialog(this, "Enter search query:");
+        // Make sure query is not null and not empty
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+            // Call method to search CSV
+            searchFeedbackInCSV(searchQuery);
+        } else {
+            // Tell user to put in valid quey
+            JOptionPane.showMessageDialog(this, "Please enter a valid search query.");
+        }
+    }//GEN-LAST:event_searchFeedbackActionPerformed
 
-        if (searchTerm != null && !searchTerm.isEmpty()) {
-            // Search through the feedback list for the term
+    // Method to save Feedback to CSV
+    private void saveFeedbackToCSV(String userEmail, String feedback) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("feedback.csv", true))) {
+            // Was displaying all feedback poorly, added logic to improve formatting
+            writer.write(userEmail + "," + feedback);
+            // Move to next line for next piece of Feedback
+            writer.newLine();
+        } catch (IOException e) { // Shows an error if issue saving feeback
+            JOptionPane.showMessageDialog(this, "Error saving feedback: " + e.getMessage());
+        }
+    }
+
+    // Method to search Feedback in CSV file
+    private void searchFeedbackInCSV(String searchQuery) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("feedback.csv"))) {
+            // Assign variable 
+            String line;
+            // Assign variable
             boolean found = false;
-            for (String feedback : feedbackList) {
-                if (feedback.contains(searchTerm)) {
-                    JOptionPane.showMessageDialog(this, "Feedback found: " + feedback);
+            // While loop which will view each line in CSV file
+            while ((line = reader.readLine()) != null) {
+                // If found, show
+                if (line.contains(searchQuery)) {
+                    JOptionPane.showMessageDialog(this, "Feedback found: " + line);
+                    // Change variable status if found
                     found = true;
+                    // Stop loop
                     break;
                 }
             }
+            // Show message is no feedback was found
             if (!found) {
-                JOptionPane.showMessageDialog(this, "No matching feedback found.");
+                JOptionPane.showMessageDialog(this, "No feedback found matching the search query.");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Please enter a search term.");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error searching feedback: " + e.getMessage());
         }
-    }//GEN-LAST:event_searchFeedbackActionPerformed
+    }
+
+    private void deleteFeedbackFromCSV(String feedbackDelete) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("feedback.csv")); BufferedWriter writer = new BufferedWriter(new FileWriter("feedback_temp.csv"))) {
+            String line;
+            // Assign variable
+            boolean feedbackFound = false;
+            // Read file
+            while ((line = reader.readLine()) != null) {
+                // Write the line to the temp file only if it doesn't match the feedback to delete
+                if (!line.contains(feedbackDelete)) {
+                    writer.write(line);
+                    writer.newLine();
+                } else {
+                    // Change Variable if found
+                    feedbackFound = true;
+                }
+            }
+            // Notify user of result
+            if (feedbackFound) {
+                JOptionPane.showMessageDialog(this, "Feedback deleted successfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Feedback not found.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error deleting feedback: " + e.getMessage());
+        }
+        // Delete the original file
+        new File("feedback.csv").delete();
+        // Rename the temp file
+        new File("feedback_temp.csv").renameTo(new File("feedback.csv"));
+    }
+
+    private void createCSVIfNotExist() {
+        File file = new File("feedback.csv");
+        // Check if file exists
+        if (!file.exists()) {
+            try {
+                // Create new file
+                file.createNewFile();
+                System.out.println("CSV file created: feedback.csv");
+            } catch (IOException e) {
+                // Show error if creation fails
+                JOptionPane.showMessageDialog(this, "Error creating CSV file: " + e.getMessage());
+            }
+        }
+    }
+
+    // Get feedback from CSV
+    private List<String> getAllFeedbackFromCSV() {
+        // List to store feedback
+        List<String> feedbackList = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("feedback.csv"))) {
+            // Assign Variable
+            String line;
+            // Add each line of fedback to the ArrayList
+            while ((line = reader.readLine()) != null) {
+                feedbackList.add(line);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error reading feedback: " + e.getMessage());
+        }
+        // Show list
+        return feedbackList;
+    }
 
     /**
      * @param args the command line arguments
@@ -390,7 +485,6 @@ public class Feedback extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button deleteFeedback;
     private javax.swing.JButton depositBTN;
-    private java.awt.Button displayFeedback;
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
@@ -400,5 +494,6 @@ public class Feedback extends javax.swing.JFrame {
     private java.awt.Button searchFeedback;
     private java.awt.Button sendFeedback;
     private java.awt.TextArea userFeedbackInput;
+    private java.awt.Button viewAllFeedback;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package returndepositschemeapp;
-
 /**
- *
  * @author Darren
  */
 public class Welcome extends javax.swing.JFrame {
@@ -103,16 +101,18 @@ public class Welcome extends javax.swing.JFrame {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-        // Open the Register page
+        // Hide Welcome page
+        this.setVisible(false);
+        // Open Register page
         new Register().setVisible(true);
-        this.setVisible(false);  // hide the Welcome page
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        // Open the Login page
+        // Hide Welcome page
+        this.setVisible(false);
+        // Open Login page
         new Login().setVisible(true);
-        this.setVisible(false);  // hide the Welcome page
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
