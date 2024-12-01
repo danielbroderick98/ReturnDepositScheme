@@ -53,7 +53,6 @@ public class UserManager {
                 users.add(user);
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -116,6 +115,5 @@ public class UserManager {
         currentUser.setSurname(surname);
         currentUser.setHomeAddress(homeAddress);
         currentUser.setEmail(email);
-
     }
 }
