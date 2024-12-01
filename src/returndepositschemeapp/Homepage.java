@@ -9,6 +9,8 @@ package returndepositschemeapp;
  * @author Darren
  */
 public class Homepage extends javax.swing.JFrame {
+    //Retrieving instance and assigning it to machineFinderVariable
+    FindClosestMachine machineFinder = FindClosestMachine.getInstanceFCM();
 
     /**
      * Creates new form Homepage
@@ -138,8 +140,9 @@ public class Homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_calculatorButtonActionPerformed
 
     private void locatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locatorButtonActionPerformed
-        // TODO add your handling code here:
-         new DepositMachineLocatorGUI().setVisible(true);  // Open Profile page
+        //Setting Deposit Machin Gui visible
+        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI(machineFinder);
+        machines.setVisible(true);
         
         // Close the Homepage window
         setVisible(false);

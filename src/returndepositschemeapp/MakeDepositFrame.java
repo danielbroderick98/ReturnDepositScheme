@@ -9,7 +9,9 @@ package returndepositschemeapp;
  * @author Seamus90
  */
 public class MakeDepositFrame extends javax.swing.JFrame {
-
+    //Retrieving instance and assigning it to machineFinderVariable
+    FindClosestMachine machineFinder = FindClosestMachine.getInstanceFCM();
+    
     /**
      * Creates new form MakeDepositFrame
      */
@@ -252,7 +254,7 @@ public class MakeDepositFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Setting Deposit Machin Gui visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
+        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI(machineFinder);
         machines.setVisible(true);
         
         //Collapsing current form
