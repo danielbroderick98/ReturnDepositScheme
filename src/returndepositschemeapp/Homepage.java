@@ -10,6 +10,7 @@ package returndepositschemeapp;
  */
 public class Homepage extends javax.swing.JFrame {
 
+
     /**
      * Creates new form Homepage
      */
@@ -138,8 +139,7 @@ public class Homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_calculatorButtonActionPerformed
 
     private void locatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locatorButtonActionPerformed
-        // TODO add your handling code here:
-         new DepositMachineLocatorGUI().setVisible(true);  // Open Profile page
+
         
         // Close the Homepage window
         setVisible(false);

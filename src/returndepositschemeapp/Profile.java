@@ -10,6 +10,7 @@ package returndepositschemeapp;
  */
 public class Profile extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form Profile
      */
@@ -329,9 +330,7 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Setting Deposit Machin Gui visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        machines.setVisible(true);
+
         
         //Collapsing current form
         setVisible(false);

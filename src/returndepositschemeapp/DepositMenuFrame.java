@@ -10,6 +10,7 @@ package returndepositschemeapp;
  */
 public class DepositMenuFrame extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form DepositFrameMenu
      */
@@ -222,18 +223,14 @@ public class DepositMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Setting Deposit Machin Gui visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        machines.setVisible(true);
+
         
         //Collapsing current form
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
-        //Setting the profile visible
-        Profile profile = new Profile();
-        profile.setVisible(true);
+
         
         //Collapsing current form
         setVisible(false); 
