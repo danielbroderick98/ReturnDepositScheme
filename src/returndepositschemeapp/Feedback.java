@@ -4,6 +4,10 @@
  */
 package returndepositschemeapp;
 
+
+import returndepositschemeapp.Homepage;
+import returndepositschemeapp.Profile;
+
 import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;
