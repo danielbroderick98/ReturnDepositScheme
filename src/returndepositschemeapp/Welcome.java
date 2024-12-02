@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package returndepositschemeapp;
-
 /**
- *
  * @author Darren
  */
 public class Welcome extends javax.swing.JFrame {
@@ -103,20 +101,18 @@ public class Welcome extends javax.swing.JFrame {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-    // Open the Register page
-    new Register().setVisible(true);  // assuming Register is the name of the Register page class
-    this.setVisible(false);  // hides the Welcome page
-    // Optional: Exit the application when Welcome frame is closed
-    // System.exit(0);
+        // Hide Welcome page
+        this.setVisible(false);
+        // Open Register page
+        new Register().setVisible(true);
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-    // Open the Login page
-    new Login().setVisible(true);  // assuming Login is the name of the Login page class
-    this.setVisible(false);  // hides the Welcome page
-    // Optional: Exit the application when Welcome frame is closed
-    // System.exit(0);
+        // Hide Welcome page
+        this.setVisible(false);
+        // Open Login page
+        new Login().setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
@@ -145,7 +141,7 @@ public class Welcome extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-            
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new Welcome().setVisible(true);

@@ -18,6 +18,15 @@ public class ReturnDepositSchemeApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+        // Call method to load users when app starts
+        UserManager.loadUsersFromCSV();
+
+        // Initialize CSV file for users
+        AppInitializer.initializeCSV(); 
+
+        //Initialising the Gui for DepositMachineLocatorGUI
+
         //Creating an instance of FindClosestMachine class
         FindClosestMachine machineFinder = new FindClosestMachine();
         
@@ -25,12 +34,10 @@ public class ReturnDepositSchemeApp {
         machineFinder.initializeLocations();
         
         //Initialising the Gui
+
         SwingUtilities.invokeLater(() -> {
             //Initialiasing Welcome Gui
             Welcome gui = new Welcome();
-            //Setting it visible
-            gui.setVisible(false);
-            
             //Initialising dmlg and passing through machineFinderInstance
             DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
             dmlg.setVisible(true);
@@ -38,6 +45,15 @@ public class ReturnDepositSchemeApp {
             //Initialising dm and passing through machineFinderInstance
             DepositMachines dm = new DepositMachines(machineFinder);
             dm.setVisible(false);
-        });  
+
+
+            gui.setVisible(false);
+        });
+        System.out.print("");
+
+            //Setting it visible
+            //gui.setVisible(false);
+            
+ 
     }
 }

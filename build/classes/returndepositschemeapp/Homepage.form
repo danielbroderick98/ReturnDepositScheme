@@ -59,10 +59,15 @@
                   </Group>
                   <EmptySpace pref="87" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="calculatorButton" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="depositButton" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
                       <Component id="profileButton" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -71,7 +76,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="59" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="calculatorButton" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="depositButton" min="-2" pref="81" max="-2" attributes="0"/>
                       <Component id="feedbackButton" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -79,7 +84,9 @@
                       <Component id="locatorButton" min="-2" pref="81" max="-2" attributes="0"/>
                       <Component id="profileButton" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -101,12 +108,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locatorButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="java.awt.Button" name="calculatorButton">
+        <Component class="java.awt.Button" name="depositButton">
           <Properties>
-            <Property name="label" type="java.lang.String" value="CALCULATOR"/>
+            <Property name="label" type="java.lang.String" value="DEPOSIT"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calculatorButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="java.awt.Button" name="profileButton">
@@ -115,6 +122,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="java.awt.Button" name="logoutButton">
+          <Properties>
+            <Property name="label" type="java.lang.String" value="LOGOUT"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

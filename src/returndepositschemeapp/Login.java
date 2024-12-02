@@ -5,7 +5,6 @@
 package returndepositschemeapp;
 
 /**
- *
  * @author Darren
  */
 public class Login extends javax.swing.JFrame {
@@ -15,6 +14,13 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        // Adding action listener for 'BACK' button
+        backLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            // When 'BACK' button clicked, calls method
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backLoginButtonActionPerformed(evt);
+            }
+        });
     }
 
     /**
@@ -34,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         passwordLogin = new java.awt.Label();
         emailLogin = new java.awt.Label();
         confirmPasswordLoginInput = new java.awt.TextField();
+        backLoginButton = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,10 +52,6 @@ public class Login extends javax.swing.JFrame {
                 confirmLoginActionPerformed(evt);
             }
         });
-
-        passwordLoginInput.setText("Enter Password...");
-
-        emailLoginInput.setText("Enter Email Adress...");
 
         confirmPasswordLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         confirmPasswordLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,7 +65,12 @@ public class Login extends javax.swing.JFrame {
         emailLogin.setForeground(new java.awt.Color(255, 255, 255));
         emailLogin.setText("Email Address");
 
-        confirmPasswordLoginInput.setText("Re-Enter Password...");
+        backLoginButton.setLabel("BACK");
+        backLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backLoginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,6 +81,8 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addComponent(confirmLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(passwordLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,7 +114,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(confirmPasswordLoginInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmPasswordLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(confirmLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(confirmLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -129,13 +141,38 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmLoginActionPerformed
-        // TODO add your handling code here:
-        // Navigate to the Homepage when the LOGIN button is clicked
-        new Homepage().setVisible(true);
-    
-        // Close the Login window
-        this.setVisible(false);
+        // TODO add your handling code here:                                         
+        // Get email and password input from the user
+        String email = emailLoginInput.getText();
+        String password = passwordLoginInput.getText();
+
+        // Validate that fields are filled
+        if (email.isEmpty() || password.isEmpty()) {
+            //If try to proceed, display message
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter email and password.");
+            return;
+        }
+
+        // Check if entered email and password matchs user on file
+        if (UserManager.authenticate(email, password)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
+            // Opens Homepage
+            new Homepage().setVisible(true);
+            // Closes current page
+            this.setVisible(false);
+        } else {
+            // State invalid credentials
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid email or password.");
+        }
     }//GEN-LAST:event_confirmLoginActionPerformed
+
+    private void backLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backLoginButtonActionPerformed
+        // TODO add your handling code here:
+        // Creates and shows the Welcome page
+        new Welcome().setVisible(true);
+        // Closes current page
+        this.dispose();
+    }//GEN-LAST:event_backLoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,14 +202,13 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button backLoginButton;
     private java.awt.Button confirmLogin;
     private java.awt.Label confirmPasswordLogin;
     private java.awt.TextField confirmPasswordLoginInput;

@@ -4,8 +4,9 @@
  */
 package returndepositschemeapp;
 
+import javax.swing.JOptionPane;
+
 /**
- *
  * @author Darren
  */
 public class Profile extends javax.swing.JFrame {
@@ -16,6 +17,17 @@ public class Profile extends javax.swing.JFrame {
      */
     public Profile() {
         initComponents();
+        // Calls method
+        loadUserProfile();
+    }
+
+    // Populates users information in 'Profile' window
+    private void loadUserProfile() {
+        User currentUser = UserManager.getCurrentUser();
+        profileNameInput.setText(currentUser.getName());
+        profileSurnameInput.setText(currentUser.getSurname());
+        profileHomeInput.setText(currentUser.getHomeAddress());
+        profileEmailInput.setText(currentUser.getEmail());
     }
 
     /**
@@ -34,22 +46,15 @@ public class Profile extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         profileBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        confirmProfile = new java.awt.Button();
+        saveProfile = new java.awt.Button();
         profileEmailInput = new java.awt.TextField();
-        saveHomeAddress = new java.awt.Button();
         profileNameInput = new java.awt.TextField();
-        saveEmail = new java.awt.Button();
         profileHomeInput = new java.awt.TextField();
-        saveSurname = new java.awt.Button();
         profileHomeLabel = new java.awt.Label();
         profileEmailLabel = new java.awt.Label();
         profileSurnameLabel = new java.awt.Label();
-        profileGenderLabel = new java.awt.Label();
         profileNameLabel = new java.awt.Label();
-        saveName = new java.awt.Button();
         profileSurnameInput = new java.awt.TextField();
-        profileGenderInput = new java.awt.TextField();
-        saveGender = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,29 +143,18 @@ public class Profile extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
-        confirmProfile.setLabel("CONFIRM");
-        confirmProfile.addActionListener(new java.awt.event.ActionListener() {
+        saveProfile.setLabel("SAVE");
+        saveProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmProfileActionPerformed(evt);
+                saveProfileActionPerformed(evt);
             }
         });
 
         profileEmailInput.setText("Enter Your Email Address...");
 
-        saveHomeAddress.setLabel("Save");
-
         profileNameInput.setText("Enter Your Name...");
 
-        saveEmail.setLabel("Save");
-
         profileHomeInput.setText("Enter Your Home Address...");
-
-        saveSurname.setLabel("Save");
-        saveSurname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveSurnameActionPerformed(evt);
-            }
-        });
 
         profileHomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         profileHomeLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,21 +168,11 @@ public class Profile extends javax.swing.JFrame {
         profileSurnameLabel.setForeground(new java.awt.Color(255, 255, 255));
         profileSurnameLabel.setText("Surname");
 
-        profileGenderLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        profileGenderLabel.setForeground(new java.awt.Color(255, 255, 255));
-        profileGenderLabel.setText("Gender");
-
         profileNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         profileNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         profileNameLabel.setText("Name");
 
-        saveName.setLabel("Save");
-
         profileSurnameInput.setText("Enter your Surname...");
-
-        profileGenderInput.setText("Enter Your Gender...");
-
-        saveGender.setLabel("Save");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,71 +182,47 @@ public class Profile extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(confirmProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(saveProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(profileEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(profileHomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(profileGenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(profileSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(profileNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(profileNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)
-                                .addComponent(saveName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(profileSurnameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(saveSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(profileEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(saveEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(profileHomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(saveHomeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(profileGenderInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(saveGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(profileHomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(profileEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(saveName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profileNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profileNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(profileSurnameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profileSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(profileEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profileHomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(profileSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(profileHomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveHomeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profileEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addComponent(profileHomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(profileGenderInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profileGenderLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(confirmProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(profileEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(profileEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(saveProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -271,10 +231,11 @@ public class Profile extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,60 +250,76 @@ public class Profile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmProfileActionPerformed
+    private void saveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveProfileActionPerformed
         // TODO add your handling code here:
-        // Navigate to the Homepage when the LOGIN button is clicked
-        new Homepage().setVisible(true);
+        // Save updated profile information
+        String name = profileNameInput.getText();
+        String surname = profileSurnameInput.getText();
+        String homeAddress = profileHomeInput.getText();
+        String email = profileEmailInput.getText();
 
-        // Close the Login window
+        // Validate input
+        // Will add more
+        if (name.isEmpty() || surname.isEmpty() || homeAddress.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill out all fields.");
+            return;
+        }
+
+        // Update current user details
+        UserManager.updateCurrentUser(name, surname, homeAddress, email);
+        // Call saveUsersToCSV method to update details
+        UserManager.saveUsersToCSV();
+        // Update message
+        JOptionPane.showMessageDialog(this, "Profile updated");
+        // Show Homepage
+        new Homepage().setVisible(true);
+        // Close Profile page
         this.setVisible(false);
-    }//GEN-LAST:event_confirmProfileActionPerformed
+    }//GEN-LAST:event_saveProfileActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         //Setting hompeage visible
         Homepage home = new Homepage();
         home.setVisible(true);
-        
-        //Collapsing current form
+
+        // Set invisible
         setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
-
-    private void saveSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSurnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saveSurnameActionPerformed
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
         Feedback feedback = new Feedback();
         feedback.setVisible(true);
-        
-        //Collapsing current form
+
+        // Set invisible
         setVisible(false);
     }//GEN-LAST:event_feedbackBtnActionPerformed
 
     private void depositBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositBTNActionPerformed
-        //Setting Deposit Frame visible
+        //Setting Deposit page visible
         DepositMenuFrame deposit = new DepositMenuFrame();
         deposit.setVisible(true);
-        
-        //Collapsing current form
-        setVisible(false); 
+
+        // Set invisible
+        setVisible(false);
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        
+        //Setting Deposit Machine page visible
+       // DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
+        //machines.setVisible(true);
+        // Set invisible
         //Collapsing current form
-        setVisible(false);
+        //setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
-        //Setting the profile visible
+        //Setting profile visible
         Profile profile = new Profile();
         profile.setVisible(true);
-        
-        //Collapsing current form
-        setVisible(false); 
+
+        // Set invisible
+        setVisible(false);
     }//GEN-LAST:event_profileBtnActionPerformed
 
     /**
@@ -381,7 +358,6 @@ public class Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button confirmProfile;
     private javax.swing.JButton depositBTN;
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
@@ -391,18 +367,12 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JButton profileBtn;
     private java.awt.TextField profileEmailInput;
     private java.awt.Label profileEmailLabel;
-    private java.awt.TextField profileGenderInput;
-    private java.awt.Label profileGenderLabel;
     private java.awt.TextField profileHomeInput;
     private java.awt.Label profileHomeLabel;
     private java.awt.TextField profileNameInput;
     private java.awt.Label profileNameLabel;
     private java.awt.TextField profileSurnameInput;
     private java.awt.Label profileSurnameLabel;
-    private java.awt.Button saveEmail;
-    private java.awt.Button saveGender;
-    private java.awt.Button saveHomeAddress;
-    private java.awt.Button saveName;
-    private java.awt.Button saveSurname;
+    private java.awt.Button saveProfile;
     // End of variables declaration//GEN-END:variables
 }
