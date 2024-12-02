@@ -275,17 +275,12 @@ public class Feedback extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-<<<<<<< HEAD
         // Setting Locator visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        machines.setVisible(true);
+       // DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
+        //machines.setVisible(true);
         // Setting Feedback invisible
-=======
-
-        
         //Collapsing current form
->>>>>>> ffddd85f86d249873209cfb61a844dfe8d0544b0
-        setVisible(false);
+        //setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
