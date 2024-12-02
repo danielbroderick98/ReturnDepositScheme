@@ -4,6 +4,9 @@
  */
 package returndepositschemeapp;
 
+import returndepositschemeapp.Homepage;
+import returndepositschemeapp.Profile;
+
 /**
  *
  * @author Darren

@@ -4,6 +4,12 @@
  */
 package returndepositschemeapp;
 
+import returndepositschemeapp.DepositMachines;
+import returndepositschemeapp.DepositMenuFrame;
+import returndepositschemeapp.Feedback;
+import returndepositschemeapp.Homepage;
+import returndepositschemeapp.Profile;
+
 /**
  *
  * @author dbrod

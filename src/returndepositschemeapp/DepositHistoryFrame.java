@@ -3,18 +3,63 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package returndepositschemeapp;
-
+import java.util.ArrayList;
+import returndepositschemeapp.Deposit;
+import returndepositschemeapp.Deposit;
+import returndepositschemeapp.DepositCSVReader;
+import returndepositschemeapp.DepositCSVReader;
+import returndepositschemeapp.DepositMachineLocatorGUI;
+import returndepositschemeapp.DepositMachineLocatorGUI;
+import returndepositschemeapp.DepositMenuFrame;
+import returndepositschemeapp.DepositMenuFrame;
+import returndepositschemeapp.Feedback;
+import returndepositschemeapp.Feedback;
+import returndepositschemeapp.Homepage;
+import returndepositschemeapp.Homepage;
+import returndepositschemeapp.Profile;
+import returndepositschemeapp.Profile;
+import returndepositschemeapp.UserDeposits;
+import returndepositschemeapp.UserDeposits;
 /**
  *
  * @author Seamus90
  */
 public class DepositHistoryFrame extends javax.swing.JFrame {
+     private UserDeposits usersDeposits;
 
     /**
      * Creates new form DepositHistoryFrame
      */
     public DepositHistoryFrame() {
         initComponents();
+        // just for testing
+        int currentUserID = 1;
+        
+        // create depositcsvreader instance
+        DepositCSVReader deposit_csv_reader = new DepositCSVReader();
+        
+        // get users deposits from csv
+        ArrayList<Deposit> userDepositsList = deposit_csv_reader.readUserDeposits(currentUserID);
+        
+        // initialise userdeposits
+        this.usersDeposits = new UserDeposits(currentUserID, userDepositsList);;
+        
+        // Print the user deposits to the JTextArea
+        printUserDepositsToJTextArea();
+    }
+    
+    public void printUserDepositsToJTextArea() {
+        // clear text area
+        jTextArea1.setText("");
+
+        // loop though userdeposits
+        for (Deposit deposit : usersDeposits.getUserDeposits()) {
+            jTextArea1.append("Deposit ID: " + deposit.getDepositID() + "\n");
+            jTextArea1.append("Date: " + deposit.getDepositDate() + "\n");
+            jTextArea1.append("Num Large Bottles: " + deposit.getNumLargeBottles() + "\n");
+            jTextArea1.append("Num Small Bottles: " + deposit.getNumSmallBottles() + "\n");
+            jTextArea1.append("Amount: " + deposit.getDepositValue() + "\n\n");
+        }
     }
 
     /**
@@ -32,10 +77,8 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
         entEirLbl1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         homeBtn = new javax.swing.JButton();
         feedbackBtn = new javax.swing.JButton();
@@ -69,35 +112,9 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
 
         jButton2.setText("Filter");
 
-        jLabel1.setText("Date");
-
-        jLabel2.setText("Bottles Deposited");
-
-        jLabel3.setText("Deposit Value");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addGap(150, 150, 150)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(45, 45, 45))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,9 +134,9 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,8 +149,8 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -252,14 +269,6 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
         Feedback feedback = new Feedback();
@@ -295,6 +304,14 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
         //Collapsing current form
         setVisible(false); 
     }//GEN-LAST:event_profileBtnActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,12 +356,10 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JButton profileBtn;

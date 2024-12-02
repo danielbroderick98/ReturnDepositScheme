@@ -4,17 +4,35 @@
  */
 package returndepositschemeapp;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import returndepositschemeapp.Deposit;
+import returndepositschemeapp.DepositCSVReader;
+import returndepositschemeapp.DepositCSVWriter;
+import returndepositschemeapp.Profile;
+import returndepositschemeapp.UserDeposits;
+
 /**
  *
  * @author Seamus90
  */
 public class MakeDepositFrame extends javax.swing.JFrame {
-
+    private UserDeposits usersDeposits;
     /**
      * Creates new form MakeDepositFrame
      */
     public MakeDepositFrame() {
         initComponents();
+        int currentUserID = 1;
+        
+        // create depositcsvreader instance
+        DepositCSVReader deposit_csv_reader = new DepositCSVReader();
+        
+        // get users deposits from csv
+        ArrayList<Deposit> userDepositsList = deposit_csv_reader.readUserDeposits(currentUserID);
+        
+        // initialise userdeposits
+        this.usersDeposits = new UserDeposits(currentUserID, userDepositsList);;
     }
 
     /**
@@ -58,6 +76,11 @@ public class MakeDepositFrame extends javax.swing.JFrame {
         entEirTxtField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
 
         jButton2.setText("Deposit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Clear");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -267,6 +290,28 @@ public class MakeDepositFrame extends javax.swing.JFrame {
         //Collapsing current form
         setVisible(false); 
     }//GEN-LAST:event_profileBtnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        // get the small a large bottle amounts and convert to int
+        int numSmallBottles = Integer.parseInt(entEirTxtField.getText());
+        int numLargeBottles = Integer.parseInt(entEirTxtField1.getText());
+        
+        // add to the users deposits 
+        usersDeposits.addDeposit(numLargeBottles, numSmallBottles);
+     
+        // gets most recently added deposit
+        Deposit addedDeposit = usersDeposits.getLatestDeposit();
+        
+        // create a DepositCSVWriter instance
+        DepositCSVWriter depositCSVWriter = new DepositCSVWriter();
+        
+        depositCSVWriter.addDepositCSV(addedDeposit);
+        
+        entEirTxtField.setText("");
+        entEirTxtField1.setText("");
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
