@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package returndepositschemeapp;
+
+import returndepositschemeapp.DepositMenuFrame;
+import returndepositschemeapp.Feedback;
+import returndepositschemeapp.Homepage;
+import returndepositschemeapp.Profile;
+
+
 //Importing DefaultListModel
 import javax.swing.DefaultListModel;
 //Importing JOptionPane
