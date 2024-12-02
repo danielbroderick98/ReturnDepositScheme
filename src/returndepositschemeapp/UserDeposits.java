@@ -30,7 +30,7 @@ public class UserDeposits {
     
     // method to add a new deposit to users deposits
     public void addDeposit(int numLargeBottles, int numSmallBottles) {
-        int depositID = nextDepositID++;
+        int depositID = DepositIDManager.getDepositID(); // calls depositIDmanager class
         
         // create a deposit and add to deposits
          Deposit newDeposit = new Deposit(depositID, userID, numLargeBottles, numSmallBottles);
@@ -40,6 +40,15 @@ public class UserDeposits {
     // method to get the last elelement in the array of deposits 
     public Deposit getLatestDeposit() {
         return deposits.get(deposits.size() - 1);
+    }
+    
+    // method to create a list of all the depositIDs
+    public ArrayList<Integer> getDepositIDs() {
+        ArrayList<Integer> depositIDsList = new ArrayList<>();
+        for (Deposit deposit : deposits) {
+            depositIDsList.add(deposit.getDepositID());
+        }
+        return depositIDsList;
     }
     
     // method to update the number of bottles deposited
