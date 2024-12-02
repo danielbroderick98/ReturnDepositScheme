@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class Profile extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form Profile
      */
@@ -304,11 +305,17 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+<<<<<<< HEAD
         //Setting Deposit Machine page visible
         DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
         machines.setVisible(true);
 
         // Set invisible
+=======
+
+        
+        //Collapsing current form
+>>>>>>> ffddd85f86d249873209cfb61a844dfe8d0544b0
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
