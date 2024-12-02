@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Seamus90
  */
 public class DeleteDepositFrame extends javax.swing.JFrame {
-    private UserDeposits usersDeposits;
+    private UserDeposits userDeposits;
 
     /**
      * Creates new form DeleteDepositFrame
@@ -26,7 +26,7 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
         ArrayList<Deposit> userDepositsList = deposit_csv_reader.readUserDeposits(currentUserID);
         
         // initialise userdeposits
-        this.usersDeposits = new UserDeposits(currentUserID, userDepositsList);
+        this.userDeposits = new UserDeposits(currentUserID, userDepositsList);
         
         // clear defaul combobox items
         jComboBox1.removeAllItems();
@@ -40,7 +40,7 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
          jComboBox1.removeAllItems();
         
         // get the ids of all the items in arraylist
-        ArrayList<Integer> depositIDsList = usersDeposits.getDepositIDs();
+        ArrayList<Integer> depositIDsList = userDeposits.getDepositIDs();
         
         // populate dropdown
         for (Integer depositID : depositIDsList) {
@@ -285,12 +285,13 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         // take in drop down item and convert to int
         String selectedItem = (String) jComboBox1.getSelectedItem();
-        System.out.println("Selected deposit ID: " + selectedItem);
+        // for testing purposes
+        System.out.println("deposit id: " + selectedItem);
 
         int depositIDToBeDeleted = Integer.parseInt((String) jComboBox1.getSelectedItem());
         
         // delete deposit
-        usersDeposits.deleteDeposit(depositIDToBeDeleted);
+        userDeposits.deleteDeposit(depositIDToBeDeleted);
         
         // create instance of depositwriter and delete in deposit file
         DepositCSVWriter depositCSVWriter = new DepositCSVWriter();

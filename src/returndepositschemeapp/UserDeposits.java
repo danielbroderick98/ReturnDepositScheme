@@ -28,6 +28,16 @@ public class UserDeposits {
         return deposits;
     }
     
+    // get a deposit by its ID
+    public Deposit getDepositByID(int depositID) {
+        for (Deposit deposit : deposits) {
+            if (deposit.getDepositID() == depositID) {
+                return deposit;
+            }
+        }
+        return null;
+    }
+    
     // method to add a new deposit to users deposits
     public void addDeposit(int numLargeBottles, int numSmallBottles) {
         int depositID = DepositIDManager.getDepositID(); // calls depositIDmanager class
