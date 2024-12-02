@@ -27,6 +27,7 @@ import returndepositschemeapp.UserDeposits;
 public class DepositHistoryFrame extends javax.swing.JFrame {
      private UserDeposits usersDeposits;
 
+    
     /**
      * Creates new form DepositHistoryFrame
      */
@@ -288,9 +289,7 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Setting Deposit Machin Gui visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        machines.setVisible(true);
+
         
         //Collapsing current form
         setVisible(false); 

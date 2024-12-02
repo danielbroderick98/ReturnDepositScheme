@@ -265,8 +265,8 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
 
     private void machineLocatorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_machineLocatorBtnActionPerformed
         //Setting Deposit Machin Gui visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        machines.setVisible(true);
+        //DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
+        //machines.setVisible(true);
 
         //Collapsing current form
         setVisible(false);

@@ -289,11 +289,11 @@ public class UpdateDepostFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Setting Deposit Machin Gui visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        machines.setVisible(true);
+        //DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
+        //machines.setVisible(true);
 
         //Collapsing current form
-        setVisible(false);
+        //setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed

@@ -12,11 +12,17 @@ import returndepositschemeapp.Profile;
  */
 public class Homepage extends javax.swing.JFrame {
 
+
     /**
      * Creates new form Homepage
      */
     public Homepage() {
         initComponents();
+        // Adding action listener for 'LOGOUT' button
+        logoutButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            // When 'LOGOUT' button clicked, calls method
+            logoutButtonActionPerformed(evt);
+        });
     }
 
     /**
@@ -31,8 +37,9 @@ public class Homepage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         feedbackButton = new java.awt.Button();
         locatorButton = new java.awt.Button();
-        calculatorButton = new java.awt.Button();
+        depositButton = new java.awt.Button();
         profileButton = new java.awt.Button();
+        logoutButton = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,10 +59,10 @@ public class Homepage extends javax.swing.JFrame {
             }
         });
 
-        calculatorButton.setLabel("CALCULATOR");
-        calculatorButton.addActionListener(new java.awt.event.ActionListener() {
+        depositButton.setLabel("DEPOSIT");
+        depositButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calculatorButtonActionPerformed(evt);
+                depositButtonActionPerformed(evt);
             }
         });
 
@@ -63,6 +70,13 @@ public class Homepage extends javax.swing.JFrame {
         profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileButtonActionPerformed(evt);
+            }
+        });
+
+        logoutButton.setLabel("LOGOUT");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -77,22 +91,28 @@ public class Homepage extends javax.swing.JFrame {
                     .addComponent(feedbackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(calculatorButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(depositButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profileButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(228, 228, 228))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(calculatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(depositButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(feedbackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(locatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+                .addGap(23, 23, 23)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,35 +137,46 @@ public class Homepage extends javax.swing.JFrame {
 
     private void feedbackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackButtonActionPerformed
         // TODO add your handling code here:
-        new Feedback().setVisible(true);  // Assuming Feedback is the name of the Feedback page class
-        
-        // Close the Homepage window
+        // Open Feedback page
+        new Feedback().setVisible(true);
+        // Close Homepage 
         setVisible(false);
     }//GEN-LAST:event_feedbackButtonActionPerformed
 
     private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
         // TODO add your handling code here:
-        // Navigate to the Profile page
-        new Profile().setVisible(true);  // Open Profile page
-        
-        // Close the Homepage window
+        // Close Homepage 
         setVisible(false);
+        // Open Profile page
+        new Profile().setVisible(true);
     }//GEN-LAST:event_profileButtonActionPerformed
 
-    private void calculatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatorButtonActionPerformed
+    private void depositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButtonActionPerformed
         // TODO add your handling code here:
         new DepositMenuFrame().setVisible(true);
+        // Close Homepage
         setVisible(false);
-        
-    }//GEN-LAST:event_calculatorButtonActionPerformed
+
+    }//GEN-LAST:event_depositButtonActionPerformed
 
     private void locatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locatorButtonActionPerformed
         // TODO add your handling code here:
-         new DepositMachineLocatorGUI().setVisible(true);  // Open Profile page
-        
+        // Open Locator page
+       // new DepositMachineLocatorGUI().setVisible(true);
+        // Close Homepage
         // Close the Homepage window
-        setVisible(false);
+        //setVisible(false);
     }//GEN-LAST:event_locatorButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        // Close Homepage
+        this.dispose();
+        // Direct to Welcome page
+        new Welcome().setVisible(true);
+
+
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,10 +212,11 @@ public class Homepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button calculatorButton;
+    private java.awt.Button depositButton;
     private java.awt.Button feedbackButton;
     private javax.swing.JPanel jPanel1;
     private java.awt.Button locatorButton;
+    private java.awt.Button logoutButton;
     private java.awt.Button profileButton;
     // End of variables declaration//GEN-END:variables
 }

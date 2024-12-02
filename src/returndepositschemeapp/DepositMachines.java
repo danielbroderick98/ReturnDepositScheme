@@ -9,16 +9,25 @@ import returndepositschemeapp.Feedback;
 import returndepositschemeapp.Homepage;
 import returndepositschemeapp.Profile;
 
+
+//Importing DefaultListModel
+import javax.swing.DefaultListModel;
+//Importing JOptionPane
+import javax.swing.JOptionPane;
 /**
  *
  * @author dbrod
  */
 public class DepositMachines extends javax.swing.JFrame {
-
+    //Retrieving instance and assigning it to machineFinderVariable
+    FindClosestMachine machineFinder = FindClosestMachine.getInstanceFCM();
+    
     /**
      * Creates new form DepositMachines
      */
-    public DepositMachines() {
+    //passing machineFinder instance through constructor parameter
+    public DepositMachines(FindClosestMachine machineFinder) {
+        this.machineFinder = machineFinder;
         initComponents();
     }
 
@@ -38,12 +47,19 @@ public class DepositMachines extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         profileBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        nearestLocLbl = new javax.swing.JLabel();
         allLocBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         allLocList = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
+        deleteLocBtn = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        searchLocBtn = new javax.swing.JButton();
+        addLocBtn = new javax.swing.JButton();
+        eircodeTxtSearch = new javax.swing.JTextField();
+        latTxtSearch = new javax.swing.JTextField();
+        longTxtSearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 102, 102));
@@ -135,32 +151,19 @@ public class DepositMachines extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("DISPLAY NEAREST LOCATION:");
-
-        nearestLocLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        nearestLocLbl.setForeground(new java.awt.Color(255, 255, 255));
-        nearestLocLbl.setText("Location");
-
-        allLocBtn.setText("DISPLAY ALL LOCATIONS");
+        allLocBtn.setText("Display All Locations");
         allLocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allLocBtnActionPerformed(evt);
             }
         });
 
-        allLocList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(allLocList);
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deleteLocBtn.setText("Delete Location");
+        deleteLocBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deleteLocBtnActionPerformed(evt);
             }
         });
 
@@ -168,49 +171,142 @@ public class DepositMachines extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                    .addComponent(deleteLocBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(allLocBtn)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nearestLocLbl)))
-                .addGap(179, 179, 179))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(allLocBtn)
+                .addGap(101, 101, 101))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nearestLocLbl))
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(allLocBtn)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteLocBtn)
+                .addContainerGap())
         );
+
+        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel3.setBorder(new javax.swing.border.MatteBorder(null));
+
+        searchLocBtn.setText("Search Location");
+        searchLocBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchLocBtnActionPerformed(evt);
+            }
+        });
+
+        addLocBtn.setText("Add Location");
+        addLocBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addLocBtnActionPerformed(evt);
+            }
+        });
+
+        eircodeTxtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eircodeTxtSearchActionPerformed(evt);
+            }
+        });
+
+        latTxtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                latTxtSearchActionPerformed(evt);
+            }
+        });
+
+        longTxtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                longTxtSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Eircode");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Latitude");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Longitude");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(searchLocBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addLocBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(longTxtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eircodeTxtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(latTxtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eircodeTxtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(latTxtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(longTxtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchLocBtn)
+                    .addComponent(addLocBtn))
+                .addGap(105, 105, 105))
+        );
+
+        searchLocBtn.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -219,7 +315,9 @@ public class DepositMachines extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -236,20 +334,21 @@ public class DepositMachines extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void allLocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allLocBtnActionPerformed
-        // TODO add your handling code here:
+        //Creating an instance of DefaultListModel called listModel
+        //Will manage the data displayed in JList
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+
+        //Iterating through the deposit locations and add them to the list model
+        for (DepositLocation location : machineFinder.depositlocation) {
+            String displayText = "Eircode: " + location.eircode + 
+                                 ", Latitude: " + location.latitude + 
+                                 ", Longitude: " + location.longitude;
+            listModel.addElement(displayText);
+        }
+
+        //Setiing the allLocList to the listModel
+        allLocList.setModel(listModel);
     }//GEN-LAST:event_allLocBtnActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        // Create and display the DepositMachines form
-        DepositMachineLocatorGUI depositMachineLocatorGuiForm = new DepositMachineLocatorGUI();
-        
-        //Setting the visibility of deposit machine locator gui to be visible
-        depositMachineLocatorGuiForm.setVisible(true);
-        
-         //Setting the visibility of deposit machine gui to be not visible
-        setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
@@ -271,7 +370,7 @@ public class DepositMachines extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Setting Deposit Machin Gui visible
-        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
+        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI(machineFinder);
         machines.setVisible(true);
         
         //Collapsing current form
@@ -287,54 +386,134 @@ public class DepositMachines extends javax.swing.JFrame {
         setVisible(false); 
     }//GEN-LAST:event_profileBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void searchLocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchLocBtnActionPerformed
+        //Retrieving the text from the search fields
+        String eircode = eircodeTxtSearch.getText().trim();
+        String latText = latTxtSearch.getText().trim();
+        String longText = longTxtSearch.getText().trim();
+
+        //Flaging to indicate if a matching location was found
+        boolean locationFound = false;
+        
+        //Using if statement to check is latText & long text not empty
+        if (!locationFound && !latText.isEmpty() && !longText.isEmpty()) {
+                //If it is not empty it will try parse the texts to a double
+                try {
+                    double latitude = Double.parseDouble(latText);
+                    double longitude = Double.parseDouble(longText);
+
+                    //Searching for matching location by latitude and longitude using a for loop
+                    //By iterating over objects in machine finder.depositlocation
+                    for (DepositLocation location : machineFinder.depositlocation) {
+                        if (location.latitude == latitude && location.longitude == longitude) {
+                            //Location found, displaying it
+                            JOptionPane.showMessageDialog(this, "Location found is valid");
+                            locationFound = true;
+                            //Exit loop once a match is found
+                            break;
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    //If latitude or longitude is invalid, showing an error message
+                    JOptionPane.showMessageDialog(this, "Invalid latitude or longitude input.");
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DepositMachines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DepositMachines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DepositMachines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DepositMachines.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DepositMachines().setVisible(true);
+            //If no location was found, displaying a message
+            if (!locationFound) {
+                JOptionPane.showMessageDialog(this, "No matching location found.");
             }
-        });
-    }
+    }//GEN-LAST:event_searchLocBtnActionPerformed
+
+    private void addLocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLocBtnActionPerformed
+        //Retrieving the text from the text fields
+       String eircode = eircodeTxtSearch.getText();
+       String latText = latTxtSearch.getText();
+       String longText = longTxtSearch.getText();
+
+       //Validating the latitude and longitude inputs
+       try {
+           //Parsing latitude and longitude to doubles
+           double latitude = Double.parseDouble(latText);
+           double longitude = Double.parseDouble(longText);
+
+           //Creating a new DepositLocation object using the entered data
+           DepositLocation newLocation = new DepositLocation(latitude, longitude, eircode);
+
+           //Adding the new location to the FindClosestMachine
+           machineFinder.addDepositLocation(newLocation);
+
+           //Saving the updated locations list to locations.txt
+           machineFinder.saveLocationsToFile();
+
+           //Clearing the text fields after adding the location
+           eircodeTxtSearch.setText("");
+           latTxtSearch.setText("");
+           longTxtSearch.setText("");
+
+           //Confirmation message
+           JOptionPane.showMessageDialog(this, "Location added successfully!");
+
+       } catch (NumberFormatException e) {
+           //Showing an error message if latitude or longitude is invalid
+           JOptionPane.showMessageDialog(this, "Please enter valid numeric values for latitude and longitude.");
+       }
+    }//GEN-LAST:event_addLocBtnActionPerformed
+
+    private void eircodeTxtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eircodeTxtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eircodeTxtSearchActionPerformed
+
+    private void deleteLocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteLocBtnActionPerformed
+        //Creating a variable to retrieve the selected index from allLocList
+        int selectedIndex = allLocList.getSelectedIndex();
+
+        //If statement to check if user removed an item
+        if (selectedIndex != -1) {
+            //Removing from DefaultListModel
+            DefaultListModel<String> listModel = (DefaultListModel<String>) allLocList.getModel();
+            listModel.remove(selectedIndex);
+
+            //Removing from machineFinder.depositlocation
+            machineFinder.depositlocation.remove(selectedIndex);
+            
+            //Saving the updated list to the file after removing it
+            machineFinder.saveLocationsToFile();
+        } else {
+            //Displaying a message if user clicks button but doesnt choose item
+            JOptionPane.showMessageDialog(this, "Please select an item to delete.");
+        }
+    }//GEN-LAST:event_deleteLocBtnActionPerformed
+
+    private void latTxtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_latTxtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_latTxtSearchActionPerformed
+
+    private void longTxtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_longTxtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_longTxtSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addLocBtn;
     private javax.swing.JButton allLocBtn;
     private javax.swing.JList<String> allLocList;
+    private javax.swing.JButton deleteLocBtn;
     private javax.swing.JButton depositBTN;
+    private javax.swing.JTextField eircodeTxtSearch;
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel nearestLocLbl;
+    private javax.swing.JTextField latTxtSearch;
+    private javax.swing.JTextField longTxtSearch;
     private javax.swing.JButton profileBtn;
+    private javax.swing.JButton searchLocBtn;
     // End of variables declaration//GEN-END:variables
 }
