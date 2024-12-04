@@ -9,10 +9,13 @@ package returndepositschemeapp;
  */
 public class Login extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form Login
      */
+    //passing machineFinder instance through constructor parameter
     public Login() {
+        
         initComponents();
         // Adding action listener for 'BACK' button
         backLoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -157,8 +160,9 @@ public class Login extends javax.swing.JFrame {
         if (UserManager.authenticate(email, password)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
             // Opens Homepage
-            new Homepage().setVisible(true);
-            // Closes current page
+            Homepage home = new Homepage();
+            home.setVisible(true);
+            //Closes current page
             this.setVisible(false);
         } else {
             // State invalid credentials

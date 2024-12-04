@@ -43,6 +43,7 @@ public class Welcome extends javax.swing.JFrame {
         });
 
         loginButton.setLabel("LOGIN");
+        loginButton.setMaximumSize(new java.awt.Dimension(53, 24));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);

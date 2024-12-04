@@ -17,7 +17,9 @@ import javax.swing.JOptionPane;
  * @author Darren
  */
 public class Feedback extends javax.swing.JFrame {
-
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
+    
     
     /**
      * Creates new form Feedback
@@ -65,9 +67,7 @@ public class Feedback extends javax.swing.JFrame {
             }
         });
 
-        feedbackBtn.setBackground(new java.awt.Color(51, 51, 51));
         feedbackBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        feedbackBtn.setForeground(new java.awt.Color(255, 255, 255));
         feedbackBtn.setText("Feedback");
         feedbackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +132,7 @@ public class Feedback extends javax.swing.JFrame {
                     .addComponent(depositBTN)
                     .addComponent(jButton1)
                     .addComponent(profileBtn))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
@@ -142,9 +142,11 @@ public class Feedback extends javax.swing.JFrame {
             }
         });
 
+        userFeedbackInput.setMaximumSize(new java.awt.Dimension(100, 80));
         userFeedbackInput.setText("Please Enter Your Feedback...");
 
         sendFeedback.setLabel("SEND");
+        sendFeedback.setMaximumSize(new java.awt.Dimension(49, 24));
         sendFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendFeedbackActionPerformed(evt);
@@ -152,6 +154,7 @@ public class Feedback extends javax.swing.JFrame {
         });
 
         viewAllFeedback.setLabel("View All Feedback");
+        viewAllFeedback.setMaximumSize(new java.awt.Dimension(113, 24));
         viewAllFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAllFeedbackActionPerformed(evt);
@@ -159,6 +162,7 @@ public class Feedback extends javax.swing.JFrame {
         });
 
         deleteFeedback.setLabel("Delete Feedback");
+        deleteFeedback.setMaximumSize(new java.awt.Dimension(107, 24));
         deleteFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteFeedbackActionPerformed(evt);
@@ -166,6 +170,7 @@ public class Feedback extends javax.swing.JFrame {
         });
 
         searchFeedback.setLabel("Search Feedback");
+        searchFeedback.setMaximumSize(new java.awt.Dimension(110, 24));
         searchFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchFeedbackActionPerformed(evt);
@@ -191,7 +196,7 @@ public class Feedback extends javax.swing.JFrame {
                         .addComponent(deleteFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(viewAllFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,18 +222,18 @@ public class Feedback extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 19, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -279,12 +284,11 @@ public class Feedback extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Setting Locator visible
-       // DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        //machines.setVisible(true);
-        // Setting Feedback invisible
-        //Collapsing current form
-        //setVisible(false);
+        //Setting DepositMachineLocator Gui visible
+        DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+        dmlg.setVisible(true);
+        
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed

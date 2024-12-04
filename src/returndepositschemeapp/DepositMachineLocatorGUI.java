@@ -4,7 +4,7 @@
  */
 package returndepositschemeapp;
 
-import returndepositschemeapp.DepositMachines;
+import returndepositschemeapp.DepositMachineLocationsGUI;
 import returndepositschemeapp.DepositMenuFrame;
 import returndepositschemeapp.Feedback;
 import returndepositschemeapp.Homepage;
@@ -12,17 +12,17 @@ import returndepositschemeapp.Profile;
 
 /**
  *
- * @author dbrod
+ * @author danielbroderick
  */
 public class DepositMachineLocatorGUI extends javax.swing.JFrame {
     //Retrieving instance and assigning it to machineFinderVariable
-    FindClosestMachine machineFinder = FindClosestMachine.getInstanceFCM();
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
     
     /**
      * Creates new form DepositMachineLocatorGUI
      */
     //passing machineFinder instance through constructor parameter
-    public DepositMachineLocatorGUI(FindClosestMachine machineFinder) {
+    public DepositMachineLocatorGUI(DepositLocationManager machineFinder) {
         this.machineFinder = machineFinder;
         initComponents();
     }
@@ -199,9 +199,7 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
             }
         });
 
-        machineLocatorBtn.setBackground(new java.awt.Color(51, 51, 51));
         machineLocatorBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        machineLocatorBtn.setForeground(new java.awt.Color(255, 255, 255));
         machineLocatorBtn.setText("Machine Locator");
         machineLocatorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,10 +316,10 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void viewDepMachBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDepMachBtnActionPerformed
-        //Creating and displaying the DepositMachines form
-        DepositMachines depositMachinesForm = new DepositMachines(machineFinder);
+        //Creating and displaying the DepositMachineLocations form
+        DepositMachineLocationsGUI depositMachinesForm = new DepositMachineLocationsGUI(machineFinder);
 
-        //Setting the visibility of deposit machine gui to be not visible
+        //Setting the visibility of deposit machine locator gui to be not visible
         depositMachinesForm.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_viewDepMachBtnActionPerformed
@@ -340,7 +338,7 @@ public class DepositMachineLocatorGUI extends javax.swing.JFrame {
 
             //Displaying the closest machine
             if (closestMachine != null) {
-                nearestLocLbl.setText("Latitude: " + closestMachine.latitude + " Longitude: " + closestMachine.longitude + " Eircode: " + closestMachine.eircode + " is the nearest location.");
+                nearestLocLbl.setText("Latitude: " + closestMachine.getLatitude() + " Longitude: " + closestMachine.getLongitude() + " Eircode: " + closestMachine.getEircode() + " is the nearest location.");
             } else {
                 nearestLocLbl.setText("No deposit locations available.");
             }
