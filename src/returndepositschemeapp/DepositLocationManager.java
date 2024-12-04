@@ -10,25 +10,25 @@ import java.io.*;
 
 /**
  *
- * @author dbrod
+ * @author danielbroderick
  */
-public class FindClosestMachine {
+public class DepositLocationManager {
     //Constructor
-    FindClosestMachine(){
+    DepositLocationManager(){
         
     }
     
-    //Creating a private variable of type FindClosestMachine
-    private static FindClosestMachine instanceFCM;
+    //Creating a private variable of type DepositLocationManager
+    private static DepositLocationManager instanceFCM;
     //Array List for deposit locations From the DepositLocation class
     ArrayList<DepositLocation> depositlocation = new ArrayList();
     
-    //Getter for other classes to acces FindClosestMachine instance
-    public static FindClosestMachine getInstanceFCM() {
+    //Getter for other classes to acces DepositLocationManager instance
+    public static DepositLocationManager getInstanceFCM() {
         //Checking to see if instance is created
         if (instanceFCM == null) {
             //Creates instance if null
-            instanceFCM = new FindClosestMachine();
+            instanceFCM = new DepositLocationManager();
         }
         return instanceFCM;
     }
@@ -50,10 +50,10 @@ public class FindClosestMachine {
 
         //For loop will iterate through all deposit locations
         for (DepositLocation dLocation : depositlocation) {
-            // Calculate the distance to the user location
+            //Calculating the distance to the user location
             double distance = calculateDistance(userlocation, dLocation);
 
-            // Update closestMachine if this distance is smaller than the current minimum
+            //Updating closestMachine if this distance is smaller than the current minimum
             if (distance < minDistance) {
                 minDistance = distance;
                 closestMachine = dLocation;
@@ -64,12 +64,12 @@ public class FindClosestMachine {
     }
     
     //Method to calculate the distance between two locations
-    //calculateDistance will be used in findClosestMachine method
+    //calculateDistance will be used in DepositLocationManager method
     private double calculateDistance(UserLocation user, DepositLocation deposit) {
-        // Using Euclidean distance
+        //Using Euclidean distance
         //Storing the distance in latDiff and lonDiff
-        double latDiff = user.latitude - deposit.latitude;
-        double lonDiff = user.longitude - deposit.longitude;
+        double latDiff = user.getLatitude() - deposit.getLatitude();
+        double lonDiff = user.getLongitude() - deposit.getLongitude();
         return Math.sqrt(latDiff * latDiff + lonDiff * lonDiff);
     }
     
@@ -82,7 +82,7 @@ public class FindClosestMachine {
         try (FileWriter writer = new FileWriter("locations.txt")) {
             //Iterating through each DepositLocation on the list
             for (DepositLocation location : depositlocation) {
-                writer.write(location.latitude + "," + location.longitude + "," + location.eircode + "\n");
+                writer.write(location.getLatitude() + "," + location.getLongitude() + "," + location.getEircode() + "\n");
             }
         } 
         //Printing the stack trace for debugging if an I/O exception happens

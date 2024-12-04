@@ -11,12 +11,14 @@ import returndepositschemeapp.Profile;
  * @author Darren
  */
 public class Homepage extends javax.swing.JFrame {
-
-
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
+    
     /**
      * Creates new form Homepage
      */
     public Homepage() {
+
         initComponents();
         // Adding action listener for 'LOGOUT' button
         logoutButton.addActionListener((java.awt.event.ActionEvent evt) -> {
@@ -44,6 +46,8 @@ public class Homepage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setMaximumSize(new java.awt.Dimension(527, 333));
+        jPanel1.setMinimumSize(new java.awt.Dimension(527, 333));
 
         feedbackButton.setLabel("FEEDBACK");
         feedbackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +71,7 @@ public class Homepage extends javax.swing.JFrame {
         });
 
         profileButton.setLabel("PROFILE");
+        profileButton.setMaximumSize(new java.awt.Dimension(67, 24));
         profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileButtonActionPerformed(evt);
@@ -160,12 +165,12 @@ public class Homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_depositButtonActionPerformed
 
     private void locatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locatorButtonActionPerformed
-        // TODO add your handling code here:
-        // Open Locator page
-       // new DepositMachineLocatorGUI().setVisible(true);
-        // Close Homepage
-        // Close the Homepage window
-        //setVisible(false);
+        //Setting Deposit Machin Gui visible
+        DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI(machineFinder);
+        machines.setVisible(true);
+        
+        
+        setVisible(false);
     }//GEN-LAST:event_locatorButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -178,38 +183,6 @@ public class Homepage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new Homepage().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button depositButton;

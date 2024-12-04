@@ -6,7 +6,7 @@ package returndepositschemeapp;
 
 /**
  *
- * @author dbrod
+ * @author danielbroderick
  */
 
 //UserLocation inherits from Location
