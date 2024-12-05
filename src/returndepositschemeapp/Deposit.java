@@ -6,13 +6,13 @@ package returndepositschemeapp;
 import java.time.LocalDate;
 /**
  *
- * 
+ * author: Seamus McMenamy
  * Represents a deposit
  */
 public class Deposit {
     // attributes
-    private int depositID;
-    private int userID;
+    private int depositId;
+    private String userEmail;
     private LocalDate depositDate;
     private int numLargeBottles;
     private int numSmallBottles;
@@ -22,13 +22,23 @@ public class Deposit {
     private static final double SMALL_BOTTLE_VALUE = 0.15;
     
     // Deposit Constructor
-    public Deposit(int depositID, int userID, int numLargeBottles, int numSmallBottles) {
-        this.depositID = depositID;
-        this.userID = userID;
+    public Deposit(int depositId, String userEmail, int numLargeBottles, int numSmallBottles) {
+        this.depositId = depositId;
+        this.userEmail = userEmail;
         this.depositDate = LocalDate.now();
         this.numLargeBottles = numLargeBottles;
         this.numSmallBottles = numSmallBottles;
         this.depositValue = calculateDepositValue();
+    }
+    
+    // overloaded deposit constructor to take in a date
+    public Deposit(int depositId, String userEmail, LocalDate depositDate, int numLargeBottles, int numSmallBottles) {
+        this.depositId = depositId;
+        this.userEmail = userEmail;
+        this.depositDate = depositDate;
+        this.numLargeBottles = numLargeBottles;
+        this.numSmallBottles = numSmallBottles;
+        this.depositValue = calculateDepositValue(); 
     }
     
     // setters
@@ -46,7 +56,6 @@ public class Deposit {
         double smallBottleDepositValue = SMALL_BOTTLE_VALUE * numSmallBottles;
         double result = Math.round((largeBottleDepositValue+ smallBottleDepositValue) * 100) /100.0;
         return result;
-        
     } 
     
     // method to update the depositvalue 
@@ -55,12 +64,12 @@ public class Deposit {
     }
     
     // getters
-    public int getDepositID() {
-        return depositID;
+    public int getDepositId() {
+        return depositId;
     }
     
-    public int getUserID() {
-        return userID;
+    public String getUserEmail() {
+        return userEmail;
     }
     
     public LocalDate getDepositDate() {
@@ -82,8 +91,8 @@ public class Deposit {
     // override the toString() method
     @Override
     public String toString() {
-        return "DepositID: " + depositID + 
-                ", CustomerID: " + userID + 
+        return "DepositID: " + depositId + 
+                ", CustomerID: " + userEmail + 
                 ", DepositDate: " + depositDate + 
                 ", Large Bottles: " + numLargeBottles + 
                 ", Small Bottles: " + numSmallBottles + 

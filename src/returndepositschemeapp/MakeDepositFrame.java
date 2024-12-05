@@ -7,20 +7,21 @@ package returndepositschemeapp;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import returndepositschemeapp.Deposit;
-import returndepositschemeapp.DepositCSVReader;
-import returndepositschemeapp.DepositCSVWriter;
+import returndepositschemeapp.DepositCsvManager;
 import returndepositschemeapp.ProfileGUI;
 import returndepositschemeapp.UserDeposits;
 
 /**
  *
- * @author Seamus90
+ * @author Seamus McMenamy
+ * Allows user to make deposits in the app
  */
 public class MakeDepositFrame extends javax.swing.JFrame {
     //This allows all the access of FindClosestMachine
     DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
 
     private UserDeposits usersDeposits;
+    private DepositCsvManager depositCsvManager;
 
 
     /**
@@ -28,16 +29,19 @@ public class MakeDepositFrame extends javax.swing.JFrame {
      */
     public MakeDepositFrame() {
         initComponents();
-        int currentUserID = 1;
+        // get current user
+        User currentUser = UserManager.getCurrentUser();
+        // store current users email
+        String currentUserEmail = currentUser.getEmail();
         
-        // create depositcsvreader instance
-        DepositCSVReader deposit_csv_reader = new DepositCSVReader();
+        // initialising depositcsvmanager object 
+        this.depositCsvManager = new DepositCsvManager();
         
         // get users deposits from csv
-        ArrayList<Deposit> userDepositsList = deposit_csv_reader.readUserDeposits(currentUserID);
+        ArrayList<Deposit> userDepositsList = this.depositCsvManager.readUserDeposits(currentUserEmail);
         
         // initialise userdeposits
-        this.usersDeposits = new UserDeposits(currentUserID, userDepositsList);;
+        this.usersDeposits = new UserDeposits(currentUserEmail, userDepositsList);
     }
 
     /**
@@ -50,12 +54,12 @@ public class MakeDepositFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        entEirLbl = new javax.swing.JLabel();
-        entEirTxtField = new javax.swing.JTextField();
-        entEirLbl1 = new javax.swing.JLabel();
-        entEirTxtField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        smallBottleLbl = new javax.swing.JLabel();
+        smallContainerField = new javax.swing.JTextField();
+        largeBottleLbl = new javax.swing.JLabel();
+        largeContainerField = new javax.swing.JTextField();
+        makeDepositButton = new javax.swing.JButton();
+        backToMenuBtn = new javax.swing.JButton();
         entEirLbl2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         homeBtn = new javax.swing.JButton();
@@ -68,29 +72,33 @@ public class MakeDepositFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        entEirLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        entEirLbl.setForeground(new java.awt.Color(255, 255, 255));
-        entEirLbl.setText("Small Containers (150ml to 500ml)");
+        smallBottleLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        smallBottleLbl.setForeground(new java.awt.Color(255, 255, 255));
+        smallBottleLbl.setText("Small Containers (150ml to 500ml)");
 
-        entEirTxtField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        smallContainerField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
 
-        entEirLbl1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        entEirLbl1.setForeground(new java.awt.Color(255, 255, 255));
-        entEirLbl1.setText("Large Containers (Over 500ml to 3L)");
+        largeBottleLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        largeBottleLbl.setForeground(new java.awt.Color(255, 255, 255));
+        largeBottleLbl.setText("Large Containers (Over 500ml to 3L)");
 
-        entEirTxtField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        largeContainerField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
 
-        jButton2.setText("Deposit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        makeDepositButton.setBackground(new java.awt.Color(240, 240, 240));
+        makeDepositButton.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        makeDepositButton.setText("Deposit");
+        makeDepositButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                makeDepositButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Clear");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        backToMenuBtn.setBackground(new java.awt.Color(240, 240, 240));
+        backToMenuBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        backToMenuBtn.setText("Back");
+        backToMenuBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                backToMenuBtnActionPerformed(evt);
             }
         });
 
@@ -102,23 +110,23 @@ public class MakeDepositFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(entEirLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(entEirLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(entEirTxtField)
-                        .addComponent(entEirTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(entEirLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(221, 221, 221))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(makeDepositButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(backToMenuBtn))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(largeBottleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(smallBottleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(smallContainerField)
+                        .addComponent(largeContainerField, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,17 +134,17 @@ public class MakeDepositFrame extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(entEirLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(entEirLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(smallBottleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entEirTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(smallContainerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entEirLbl1)
+                .addComponent(largeBottleLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entEirTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(largeContainerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(makeDepositButton)
+                    .addComponent(backToMenuBtn))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
@@ -254,9 +262,13 @@ public class MakeDepositFrame extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void backToMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuBtnActionPerformed
+        // open depositmenuframe page
+        DepositMenuFrame depositMenu = new DepositMenuFrame();
+        depositMenu.setVisible(true);
+        // collapse current form
+        setVisible(false);
+    }//GEN-LAST:event_backToMenuBtnActionPerformed
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
@@ -292,27 +304,42 @@ public class MakeDepositFrame extends javax.swing.JFrame {
         setVisible(false); 
     }//GEN-LAST:event_profileBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    // will add the deposit to userDeposits and csv when click
+    private void makeDepositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeDepositButtonActionPerformed
         // TODO add your handling code here:
-        // get the small a large bottle amounts and convert to int
-        int numSmallBottles = Integer.parseInt(entEirTxtField.getText());
-        int numLargeBottles = Integer.parseInt(entEirTxtField1.getText());
+        //initialise bottle counts to 0
+        int numSmallBottles = 0;
+        int numLargeBottles = 0;
         
-        // add to the users deposits 
+        // get input from text fields
+        String numSmallBottlesString = smallContainerField.getText();
+        String numLargeBottlesString = largeContainerField.getText();
+        
+        // check small bottle input, if its not empty, covert input to int
+        if (numSmallBottlesString.isEmpty() == false) {
+            numSmallBottles = Integer.parseInt(numSmallBottlesString);
+        } 
+        
+        // check large bottle input and do same
+        if (numLargeBottlesString.isEmpty() == false) {
+            numLargeBottles = Integer.parseInt(numLargeBottlesString);
+        } 
+        
+        // add to the userdeposits instance 
         usersDeposits.addDeposit(numLargeBottles, numSmallBottles);
      
         // gets most recently added deposit
         Deposit addedDeposit = usersDeposits.getLatestDeposit();
         
-        // create a DepositCSVWriter instance
-        DepositCSVWriter depositCSVWriter = new DepositCSVWriter();
+        // save deposit to csv file
+        depositCsvManager.addDepositCsv(addedDeposit);
         
-        depositCSVWriter.addDepositCSV(addedDeposit);
-        
-        entEirTxtField.setText("");
-        entEirTxtField1.setText("");
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        // reset fields
+        smallContainerField.setText("");
+        largeContainerField.setText("");
+        // message to display deposit was successful
+        javax.swing.JOptionPane.showMessageDialog(this, "Deposit Successful!");
+    }//GEN-LAST:event_makeDepositButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,20 +376,21 @@ public class MakeDepositFrame extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToMenuBtn;
     private javax.swing.JButton depositBTN;
-    private javax.swing.JLabel entEirLbl;
-    private javax.swing.JLabel entEirLbl1;
     private javax.swing.JLabel entEirLbl2;
-    private javax.swing.JTextField entEirTxtField;
-    private javax.swing.JTextField entEirTxtField1;
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel largeBottleLbl;
+    private javax.swing.JTextField largeContainerField;
+    private javax.swing.JButton makeDepositButton;
     private javax.swing.JButton profileBtn;
+    private javax.swing.JLabel smallBottleLbl;
+    private javax.swing.JTextField smallContainerField;
     // End of variables declaration//GEN-END:variables
 }
