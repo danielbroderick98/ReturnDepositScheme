@@ -36,8 +36,8 @@ public class ReturnDepositSchemeApp {
         //Initialising the Gui
 
         SwingUtilities.invokeLater(() -> {
-            //Initialiasing Welcome Gui
-            Welcome gui = new Welcome();
+            //Initialiasing WelcomeGUI Gui
+            WelcomeGUI gui = new WelcomeGUI();
             //Initialising dmlg and passing through machineFinderInstance
             DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
             dmlg.setVisible(true);
