@@ -7,41 +7,46 @@ import java.util.ArrayList;
 /**
  *
  * @author Seamus90
+ * gui that allows users to select a deposit id and then update it based on bottle amounts enter in fields
  */
 public class UpdateDepostFrame extends javax.swing.JFrame {
     private UserDeposits userDeposits;
+    private DepositCsvManager depositCsvManager;
     /**
      * Creates new form UpdateDepostForm
      */
     public UpdateDepostFrame() {
         initComponents();
-        int currentUserID = 1;
+        // get current user
+        User currentUser = UserManager.getCurrentUser();
+        // store current users email
+        String currentUserEmail = currentUser.getEmail();
         
-        // create depositcsvreader instance
-        DepositCSVReader deposit_csv_reader = new DepositCSVReader();
+        // initialising depositcsvmanager object 
+        this.depositCsvManager = new DepositCsvManager();
         
         // get users deposits from csv
-        ArrayList<Deposit> userDepositsList = deposit_csv_reader.readUserDeposits(currentUserID);
+        ArrayList<Deposit> userDepositsList = this.depositCsvManager.readUserDeposits(currentUserEmail);
         
         // initialise userdeposits
-        this.userDeposits = new UserDeposits(currentUserID, userDepositsList);
+        this.userDeposits = new UserDeposits(currentUserEmail, userDepositsList);
         
         // clear defaul combobox items
-        jComboBox1.removeAllItems();
+        depositIdComboBox.removeAllItems();
         
         // populate dropdown
         populateDepositComboBox();
     }
     // populate the combobox with depositIDS
     public void populateDepositComboBox() {
-         jComboBox1.removeAllItems();
+         depositIdComboBox.removeAllItems();
         
         // get the ids of all the items in arraylist
-        ArrayList<Integer> depositIDsList = userDeposits.getDepositIDs();
+        ArrayList<Integer> depositIDsList = userDeposits.getDepositIds();
         
         // populate dropdown
         for (Integer depositID : depositIDsList) {
-            jComboBox1.addItem(String.valueOf(depositID));
+            depositIdComboBox.addItem(String.valueOf(depositID));
         }
     }
 
@@ -61,14 +66,15 @@ public class UpdateDepostFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         profileBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        entEirLbl = new javax.swing.JLabel();
-        entEirTxtField = new javax.swing.JTextField();
-        entEirLbl1 = new javax.swing.JLabel();
-        entEirTxtField1 = new javax.swing.JTextField();
-        entEirLbl2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        entEirLbl3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        smallContainersLbl = new javax.swing.JLabel();
+        smallContainerField = new javax.swing.JTextField();
+        largeContainerLbl = new javax.swing.JLabel();
+        largeContainerField = new javax.swing.JTextField();
+        updatePageHeaderLbl = new javax.swing.JLabel();
+        depositIdComboBox = new javax.swing.JComboBox<>();
+        selectDepositIdLbl = new javax.swing.JLabel();
+        upDateDepositBtn = new javax.swing.JButton();
+        backToDepositMenuBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,32 +163,43 @@ public class UpdateDepostFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        entEirLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        entEirLbl.setForeground(new java.awt.Color(255, 255, 255));
-        entEirLbl.setText("Small Containers (150ml to 500ml)");
+        smallContainersLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        smallContainersLbl.setForeground(new java.awt.Color(255, 255, 255));
+        smallContainersLbl.setText("Small Containers (150ml to 500ml)");
 
-        entEirTxtField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        smallContainerField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
 
-        entEirLbl1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        entEirLbl1.setForeground(new java.awt.Color(255, 255, 255));
-        entEirLbl1.setText("Large Containers (Over 500ml to 3L)");
+        largeContainerLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        largeContainerLbl.setForeground(new java.awt.Color(255, 255, 255));
+        largeContainerLbl.setText("Large Containers (Over 500ml to 3L)");
 
-        entEirTxtField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        largeContainerField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
 
-        entEirLbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        entEirLbl2.setForeground(new java.awt.Color(255, 255, 255));
-        entEirLbl2.setText("Update Deposit");
+        updatePageHeaderLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        updatePageHeaderLbl.setForeground(new java.awt.Color(255, 255, 255));
+        updatePageHeaderLbl.setText("Update Deposit");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        depositIdComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        entEirLbl3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        entEirLbl3.setForeground(new java.awt.Color(255, 255, 255));
-        entEirLbl3.setText("Select Deposit ID");
+        selectDepositIdLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectDepositIdLbl.setForeground(new java.awt.Color(255, 255, 255));
+        selectDepositIdLbl.setText("Select Deposit ID");
 
-        jButton2.setText("Update");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        upDateDepositBtn.setBackground(new java.awt.Color(240, 240, 240));
+        upDateDepositBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        upDateDepositBtn.setText("Update");
+        upDateDepositBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                upDateDepositBtnActionPerformed(evt);
+            }
+        });
+
+        backToDepositMenuBtn.setBackground(new java.awt.Color(240, 240, 240));
+        backToDepositMenuBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        backToDepositMenuBtn.setText("Back");
+        backToDepositMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToDepositMenuBtnActionPerformed(evt);
             }
         });
 
@@ -193,46 +210,49 @@ public class UpdateDepostFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(189, 189, 189)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(entEirLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(entEirLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(entEirTxtField)
-                    .addComponent(entEirTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(largeContainerLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(smallContainersLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(smallContainerField)
+                    .addComponent(largeContainerField, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(entEirLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(221, 221, 221))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(entEirLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(233, 233, 233))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(depositIdComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(271, 271, 271))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(270, 270, 270))))
+                        .addComponent(upDateDepositBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(backToDepositMenuBtn)
+                        .addGap(225, 225, 225))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updatePageHeaderLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectDepositIdLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(232, 232, 232))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(entEirLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entEirLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(updatePageHeaderLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(entEirLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entEirTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entEirLbl1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entEirTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectDepositIdLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(depositIdComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(smallContainersLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(smallContainerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(largeContainerLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(largeContainerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(upDateDepositBtn)
+                    .addComponent(backToDepositMenuBtn))
                 .addGap(21, 21, 21))
         );
 
@@ -305,33 +325,60 @@ public class UpdateDepostFrame extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_profileBtnActionPerformed
 
-    // updates a deposit on click
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    // updates a deposit with the new bottle number inside the input fields when btn is clicked
+    private void upDateDepositBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upDateDepositBtnActionPerformed
         // TODO add your handling code here:
-        // get new amounts to be updated
-        int numSmallBottles = Integer.parseInt(entEirTxtField.getText());
-        int numLargeBottles = Integer.parseInt(entEirTxtField1.getText());
+        //initialise bottle counts to 0
+        int numSmallBottles = 0;
+        int numLargeBottles = 0;
         
-        String selectedItem = (String) jComboBox1.getSelectedItem();
-        // for testing purposes
-        System.out.println("deposit id: " + selectedItem);
+        // get input from text fields
+        String numSmallBottlesString = smallContainerField.getText();
+        String numLargeBottlesString = largeContainerField.getText();
         
-        // get id to be update
-        int depositIDToBeUpdates = Integer.parseInt((String) jComboBox1.getSelectedItem());
+        // pull in drop down id number selected and convert to int
+        String selectedDepositIdString = (String) depositIdComboBox.getSelectedItem();
+        int selectedDepositId = Integer.parseInt(selectedDepositIdString);
         
+        // get the selected deposit
+        Deposit selectedDeposit = userDeposits.getDepositById(selectedDepositId);
+        
+        // check if either field is empty, if so get the current bottle count, otherwise take the input amount
+        if (numSmallBottlesString.isEmpty() == false) {
+            numSmallBottles = Integer.parseInt(numSmallBottlesString);
+        } else {
+            numSmallBottles = selectedDeposit.getNumSmallBottles();
+        }
+        
+        if (numLargeBottlesString.isEmpty() == false) {
+            numLargeBottles = Integer.parseInt(numLargeBottlesString);
+        } else {
+            numLargeBottles = selectedDeposit.getNumLargeBottles();
+        }
+        
+
         // pass in id and numbers to be updated
-        userDeposits.updateDeposit(depositIDToBeUpdates, numLargeBottles, numSmallBottles);
+        userDeposits.updateDeposit(selectedDepositId, numLargeBottles, numSmallBottles);
+     
+        // update csv
+        depositCsvManager.updateDepositCsv(selectedDeposit);
         
-        // get updated deposit and pass to csv
-        Deposit updatedDeposit = userDeposits.getDepositByID(depositIDToBeUpdates);
+        // reset fields
+        smallContainerField.setText("");
+        largeContainerField.setText("");
         
-        DepositCSVWriter depositCSVWriter = new DepositCSVWriter();
-        depositCSVWriter.updateDepositCSV(updatedDeposit);
+        // succesful updates message
+        javax.swing.JOptionPane.showMessageDialog(this, "Deposit successfully updated!");
         
-        entEirTxtField.setText("");
-        entEirTxtField1.setText("");
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_upDateDepositBtnActionPerformed
+
+    private void backToDepositMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToDepositMenuBtnActionPerformed
+        // TODO add your handling code here:
+        DepositMenuFrame depositMenu = new DepositMenuFrame();
+        depositMenu.setVisible(true);
+        // collapse current form
+        setVisible(false);
+    }//GEN-LAST:event_backToDepositMenuBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,20 +417,21 @@ public class UpdateDepostFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToDepositMenuBtn;
     private javax.swing.JButton depositBTN;
-    private javax.swing.JLabel entEirLbl;
-    private javax.swing.JLabel entEirLbl1;
-    private javax.swing.JLabel entEirLbl2;
-    private javax.swing.JLabel entEirLbl3;
-    private javax.swing.JTextField entEirTxtField;
-    private javax.swing.JTextField entEirTxtField1;
+    private javax.swing.JComboBox<String> depositIdComboBox;
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField largeContainerField;
+    private javax.swing.JLabel largeContainerLbl;
     private javax.swing.JButton profileBtn;
+    private javax.swing.JLabel selectDepositIdLbl;
+    private javax.swing.JTextField smallContainerField;
+    private javax.swing.JLabel smallContainersLbl;
+    private javax.swing.JButton upDateDepositBtn;
+    private javax.swing.JLabel updatePageHeaderLbl;
     // End of variables declaration//GEN-END:variables
 }

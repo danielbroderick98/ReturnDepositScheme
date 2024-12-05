@@ -4,10 +4,11 @@
  */
 package returndepositschemeapp;
 import java.util.ArrayList;
+import java.time.LocalDate;
 import returndepositschemeapp.Deposit;
 import returndepositschemeapp.Deposit;
-import returndepositschemeapp.DepositCSVReader;
-import returndepositschemeapp.DepositCSVReader;
+import returndepositschemeapp.DepositCsvManager;
+import returndepositschemeapp.DepositCsvManager;
 import returndepositschemeapp.DepositMachineLocatorGUI;
 import returndepositschemeapp.DepositMachineLocatorGUI;
 import returndepositschemeapp.DepositMenuFrame;
@@ -25,42 +26,45 @@ import returndepositschemeapp.UserDeposits;
  * @author Seamus90
  */
 public class DepositHistoryFrame extends javax.swing.JFrame {
-     private UserDeposits usersDeposits;
+    private UserDeposits usersDeposits;
 
     
     /**
      * Creates new form DepositHistoryFrame
+     * gui that displays a users deposit history, can filter by date
      */
     public DepositHistoryFrame() {
         initComponents();
-        // just for testing
-        int currentUserID = 1;
+        // get current user
+        User currentUser = UserManager.getCurrentUser();
+        // store current users email
+        String currentUserEmail = currentUser.getEmail();
         
-        // create depositcsvreader instance
-        DepositCSVReader deposit_csv_reader = new DepositCSVReader();
+        // create depositcvsmanager instance
+        DepositCsvManager depositCsvManager = new DepositCsvManager();
         
         // get users deposits from csv
-        ArrayList<Deposit> userDepositsList = deposit_csv_reader.readUserDeposits(currentUserID);
+        ArrayList<Deposit> userDepositsList = depositCsvManager.readUserDeposits(currentUserEmail);
         
         // initialise userdeposits
-        this.usersDeposits = new UserDeposits(currentUserID, userDepositsList);;
+        this.usersDeposits = new UserDeposits(currentUserEmail, userDepositsList);
         
         // Print the user deposits to the JTextArea
         printUserDepositsToJTextArea();
     }
     
+    // diplay user deposits in text area
     public void printUserDepositsToJTextArea() {
         // clear text area
-        jTextArea1.setText("");
-
-        // loop though userdeposits
-        for (Deposit deposit : usersDeposits.getUserDeposits()) {
-            jTextArea1.append("Deposit ID: " + deposit.getDepositID() + "\n");
-            jTextArea1.append("Date: " + deposit.getDepositDate() + "\n");
-            jTextArea1.append("Num Large Bottles: " + deposit.getNumLargeBottles() + "\n");
-            jTextArea1.append("Num Small Bottles: " + deposit.getNumSmallBottles() + "\n");
-            jTextArea1.append("Amount: " + deposit.getDepositValue() + "\n\n");
-        }
+        depositHistoryTextArea.setText("");
+        
+        // call method to get the output you want displayed
+        String textToBeDisplayed = usersDeposits.getAllDepositDetails();
+        // pass text to be displayed into the text area
+        depositHistoryTextArea.setText(textToBeDisplayed);
+        
+        // displaying text area from the top
+        depositHistoryTextArea.setCaretPosition(0);
     }
 
     /**
@@ -74,12 +78,14 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         entEirLbl = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        fromDateInputField = new javax.swing.JTextField();
         entEirLbl1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        toDateInputField = new javax.swing.JTextField();
+        filterDateBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        depositHistoryTextArea = new javax.swing.JTextArea();
+        backToDepositMenuBtn = new javax.swing.JButton();
+        resetFilterBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         homeBtn = new javax.swing.JButton();
         feedbackBtn = new javax.swing.JButton();
@@ -95,27 +101,40 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
         entEirLbl.setForeground(new java.awt.Color(255, 255, 255));
         entEirLbl.setText("From Date:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         entEirLbl1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         entEirLbl1.setForeground(new java.awt.Color(255, 255, 255));
         entEirLbl1.setText("To Date: ");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        filterDateBtn.setBackground(new java.awt.Color(240, 240, 240));
+        filterDateBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        filterDateBtn.setText("Filter");
+        filterDateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                filterDateBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Filter");
+        depositHistoryTextArea.setColumns(20);
+        depositHistoryTextArea.setRows(5);
+        jScrollPane1.setViewportView(depositHistoryTextArea);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        backToDepositMenuBtn.setBackground(new java.awt.Color(240, 240, 240));
+        backToDepositMenuBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        backToDepositMenuBtn.setText("Back");
+        backToDepositMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToDepositMenuBtnActionPerformed(evt);
+            }
+        });
+
+        resetFilterBtn.setBackground(new java.awt.Color(240, 240, 240));
+        resetFilterBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        resetFilterBtn.setText("Reset");
+        resetFilterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetFilterBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,16 +146,21 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(entEirLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fromDateInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(entEirLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(toDateInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton2))
+                        .addComponent(filterDateBtn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(215, 215, 215)
+                        .addComponent(backToDepositMenuBtn)
+                        .addGap(33, 33, 33)
+                        .addComponent(resetFilterBtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -145,13 +169,17 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entEirLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fromDateInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(entEirLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(toDateInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filterDateBtn))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backToDepositMenuBtn)
+                    .addComponent(resetFilterBtn))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -304,13 +332,64 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
         setVisible(false); 
     }//GEN-LAST:event_profileBtnActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    // takes user back to deposit menu
+    private void backToDepositMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToDepositMenuBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        DepositMenuFrame depositMenu = new DepositMenuFrame();
+        depositMenu.setVisible(true);
+        // collapse current form
+        setVisible(false);
+    }//GEN-LAST:event_backToDepositMenuBtnActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    // used to filter text area by dates 
+    private void filterDateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterDateBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        // get date input from fields
+        String fromDateString = fromDateInputField.getText();
+        String toDateString = toDateInputField.getText();
+        
+        // holds the result of filtered data
+        String output;
+        // if both contain dates
+        if (fromDateString.isEmpty() == false && toDateString.isEmpty() == false) {
+            LocalDate fromDate = LocalDate.parse(fromDateString);
+            LocalDate toDate = LocalDate.parse(toDateString);
+            output = usersDeposits.getDepositDetailsFilterBoth(fromDate, toDate);
+        }else if (fromDateString.isEmpty() == false) {
+            // if only the from date has an input
+            LocalDate fromDate = LocalDate.parse(fromDateString);
+            output = usersDeposits.getDepositDetailsFilterFromDate(fromDate);
+        }else if (toDateString.isEmpty() == false) {
+            // if only the to date has an input
+            LocalDate toDate = LocalDate.parse(toDateString);
+            output = usersDeposits.getDepositDetailsFilterToDate(toDate);
+        }else {
+            output = usersDeposits.getAllDepositDetails();
+        }
+        
+        // clear input fields
+        fromDateInputField.setText("");
+        toDateInputField.setText("");
+
+        // if the output equals this text or the output is empty, then it means that the search didnt find anything
+        if (output.equals("***You have not made any deposits yet***") || output.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "No results found!");
+            // reset deposit history details
+            depositHistoryTextArea.setText(usersDeposits.getAllDepositDetails());
+        } else {
+            depositHistoryTextArea.setText(output);
+        }
+        depositHistoryTextArea.setCaretPosition(0);
+    }//GEN-LAST:event_filterDateBtnActionPerformed
+
+    // resets the text that appears the text area
+    private void resetFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetFilterBtnActionPerformed
+        // TODO add your handling code here:
+        fromDateInputField.setText("");
+        toDateInputField.setText("");
+        depositHistoryTextArea.setText(usersDeposits.getAllDepositDetails());
+        
+    }//GEN-LAST:event_resetFilterBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,19 +427,21 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToDepositMenuBtn;
     private javax.swing.JButton depositBTN;
+    private javax.swing.JTextArea depositHistoryTextArea;
     private javax.swing.JLabel entEirLbl;
     private javax.swing.JLabel entEirLbl1;
     private javax.swing.JButton feedbackBtn;
+    private javax.swing.JButton filterDateBtn;
+    private javax.swing.JTextField fromDateInputField;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton profileBtn;
+    private javax.swing.JButton resetFilterBtn;
+    private javax.swing.JTextField toDateInputField;
     // End of variables declaration//GEN-END:variables
 }

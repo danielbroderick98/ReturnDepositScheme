@@ -12,11 +12,9 @@ import returndepositschemeapp.Profile;
 /**
  *
  * @author 
+ * acts as home page for deposits, allows navigation to other pages
  */
 public class DepositMenuFrame extends javax.swing.JFrame {
-    
-    
-
     
     /**
      * Creates new form DepositFrameMenu
@@ -36,10 +34,12 @@ public class DepositMenuFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        toAddDepositFrameBtn = new javax.swing.JButton();
+        toDepositLeaderBoardFrame = new javax.swing.JButton();
+        toDeleteDepositFrameBtn = new javax.swing.JButton();
+        toUpdateDepositFrameBtn = new javax.swing.JButton();
+        toDepositHistoryFrameBtn = new javax.swing.JButton();
+        toHomeBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         homeBtn = new javax.swing.JButton();
         feedbackBtn = new javax.swing.JButton();
@@ -51,31 +51,57 @@ public class DepositMenuFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        jButton2.setText("Make Deposit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        toAddDepositFrameBtn.setBackground(new java.awt.Color(240, 240, 240));
+        toAddDepositFrameBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        toAddDepositFrameBtn.setText("Make Deposit");
+        toAddDepositFrameBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                toAddDepositFrameBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Deposit History");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        toDepositLeaderBoardFrame.setBackground(new java.awt.Color(240, 240, 240));
+        toDepositLeaderBoardFrame.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        toDepositLeaderBoardFrame.setText("LeaderBoard");
+        toDepositLeaderBoardFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                toDepositLeaderBoardFrameActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Delete Deposit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        toDeleteDepositFrameBtn.setBackground(new java.awt.Color(240, 240, 240));
+        toDeleteDepositFrameBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        toDeleteDepositFrameBtn.setText("Delete Deposit");
+        toDeleteDepositFrameBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                toDeleteDepositFrameBtnActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Update Deposit");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        toUpdateDepositFrameBtn.setBackground(new java.awt.Color(240, 240, 240));
+        toUpdateDepositFrameBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        toUpdateDepositFrameBtn.setText("Update Deposit");
+        toUpdateDepositFrameBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                toUpdateDepositFrameBtnActionPerformed(evt);
+            }
+        });
+
+        toDepositHistoryFrameBtn.setBackground(new java.awt.Color(240, 240, 240));
+        toDepositHistoryFrameBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        toDepositHistoryFrameBtn.setText("Deposit History");
+        toDepositHistoryFrameBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toDepositHistoryFrameBtnActionPerformed(evt);
+            }
+        });
+
+        toHomeBtn.setBackground(new java.awt.Color(240, 240, 240));
+        toHomeBtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        toHomeBtn.setText("Home");
+        toHomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toHomeBtnActionPerformed(evt);
             }
         });
 
@@ -84,14 +110,23 @@ public class DepositMenuFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addGap(89, 89, 89)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(toDepositHistoryFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(toDepositLeaderBoardFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(toAddDepositFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(toDeleteDepositFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(toUpdateDepositFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(toHomeBtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,13 +134,16 @@ public class DepositMenuFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(toAddDepositFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toDeleteDepositFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toUpdateDepositFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(toDepositLeaderBoardFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toDepositHistoryFrameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(toHomeBtn)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -224,17 +262,22 @@ public class DepositMenuFrame extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_homeBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    // opens addepositframe gui
+    private void toAddDepositFrameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toAddDepositFrameBtnActionPerformed
         // TODO add your handling code here:
         new MakeDepositFrame().setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_toAddDepositFrameBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    // opens depositleaderboardframe gui
+    private void toDepositLeaderBoardFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toDepositLeaderBoardFrameActionPerformed
         // TODO add your handling code here:
-        new DepositHistoryFrame().setVisible(true);
+        DepositLeaderBoardFrame depositLeaderBoard = new DepositLeaderBoardFrame();
+        depositLeaderBoard.setVisible(true);
+        
+        //Collapsing current form
         setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_toDepositLeaderBoardFrameActionPerformed
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
@@ -268,17 +311,45 @@ public class DepositMenuFrame extends javax.swing.JFrame {
         setVisible(false); 
     }//GEN-LAST:event_profileBtnActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        new DeleteDepositFrame().setVisible(true);
+    // opens deletedepostframe gui
+    private void toDeleteDepositFrameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toDeleteDepositFrameBtnActionPerformed
+        // TODO add your handling code here:#
+        DeleteDepositFrame deleteDepositForm = new DeleteDepositFrame();
+        deleteDepositForm.setVisible(true);
+        
+        //Collapsing current form
         setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_toDeleteDepositFrameBtnActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        new UpdateDepostFrame().setVisible(true);
+    // opens updatedepostframe gui
+    private void toUpdateDepositFrameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toUpdateDepositFrameBtnActionPerformed
+        // TODO add your handling code here:#
+        UpdateDepostFrame updateDepostFrame = new UpdateDepostFrame();
+        updateDepostFrame.setVisible(true);
+        
+        //Collapsing current form
         setVisible(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_toUpdateDepositFrameBtnActionPerformed
+
+    // opens depostHistoryframe gui
+    private void toDepositHistoryFrameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toDepositHistoryFrameBtnActionPerformed
+        // TODO add your handling code here:
+        DepositHistoryFrame depositHistoryFrame = new DepositHistoryFrame();
+        depositHistoryFrame.setVisible(true);
+        
+        //Collapsing current form
+        setVisible(false);
+    }//GEN-LAST:event_toDepositHistoryFrameBtnActionPerformed
+
+    // goes back to the home page
+    private void toHomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toHomeBtnActionPerformed
+        // TODO add your handling code here:
+        Homepage homepage = new Homepage();
+        homepage.setVisible(true);
+        
+        //Collapsing current form
+        setVisible(false);
+    }//GEN-LAST:event_toHomeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,12 +392,14 @@ public class DepositMenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton feedbackBtn;
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton profileBtn;
+    private javax.swing.JButton toAddDepositFrameBtn;
+    private javax.swing.JButton toDeleteDepositFrameBtn;
+    private javax.swing.JButton toDepositHistoryFrameBtn;
+    private javax.swing.JButton toDepositLeaderBoardFrame;
+    private javax.swing.JButton toHomeBtn;
+    private javax.swing.JButton toUpdateDepositFrameBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -40,14 +40,14 @@ public class ReturnDepositSchemeApp {
             Welcome gui = new Welcome();
             //Initialising dmlg and passing through machineFinderInstance
             DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
-            dmlg.setVisible(true);
+            dmlg.setVisible(false);
             
             //Initialising dm and passing through machineFinderInstance
             DepositMachines dm = new DepositMachines(machineFinder);
             dm.setVisible(false);
 
 
-            gui.setVisible(false);
+            gui.setVisible(true);
         });
         System.out.print("");
 
