@@ -12,8 +12,15 @@ import javax.swing.JOptionPane;
  *
  * @author Darren
  */
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
 public class FeedbackGUI extends javax.swing.JFrame {
 
+=======
+public class Feedback extends javax.swing.JFrame {
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
+    
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
     
     /**
      * Creates new form Feedback
@@ -61,9 +68,7 @@ public class FeedbackGUI extends javax.swing.JFrame {
             }
         });
 
-        feedbackBtn.setBackground(new java.awt.Color(51, 51, 51));
         feedbackBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        feedbackBtn.setForeground(new java.awt.Color(255, 255, 255));
         feedbackBtn.setText("Feedback");
         feedbackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +133,7 @@ public class FeedbackGUI extends javax.swing.JFrame {
                     .addComponent(depositBTN)
                     .addComponent(jButton1)
                     .addComponent(profileBtn))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         feedbackPanel.setBackground(new java.awt.Color(153, 153, 153));
@@ -138,31 +143,56 @@ public class FeedbackGUI extends javax.swing.JFrame {
             }
         });
 
+        userFeedbackInput.setMaximumSize(new java.awt.Dimension(100, 80));
         userFeedbackInput.setText("Please Enter Your Feedback...");
 
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
         sendFeedbackBtn.setLabel("SEND");
         sendFeedbackBtn.addActionListener(new java.awt.event.ActionListener() {
+=======
+        sendFeedback.setLabel("SEND");
+        sendFeedback.setMaximumSize(new java.awt.Dimension(49, 24));
+        sendFeedback.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendFeedbackBtnActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
         viewAllFeedbackBtn.setLabel("View All Feedback");
         viewAllFeedbackBtn.addActionListener(new java.awt.event.ActionListener() {
+=======
+        viewAllFeedback.setLabel("View All Feedback");
+        viewAllFeedback.setMaximumSize(new java.awt.Dimension(113, 24));
+        viewAllFeedback.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAllFeedbackBtnActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
         deleteFeedbackBtn.setLabel("Delete Feedback");
         deleteFeedbackBtn.addActionListener(new java.awt.event.ActionListener() {
+=======
+        deleteFeedback.setLabel("Delete Feedback");
+        deleteFeedback.setMaximumSize(new java.awt.Dimension(107, 24));
+        deleteFeedback.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteFeedbackBtnActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
         searchFeedbackBtn.setLabel("Search Feedback");
         searchFeedbackBtn.addActionListener(new java.awt.event.ActionListener() {
+=======
+        searchFeedback.setLabel("Search Feedback");
+        searchFeedback.setMaximumSize(new java.awt.Dimension(110, 24));
+        searchFeedback.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchFeedbackBtnActionPerformed(evt);
             }
@@ -186,8 +216,13 @@ public class FeedbackGUI extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(deleteFeedbackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
                         .addComponent(viewAllFeedbackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(70, Short.MAX_VALUE))
+=======
+                        .addComponent(viewAllFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
         );
         feedbackPanelLayout.setVerticalGroup(
             feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,18 +248,29 @@ public class FeedbackGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
                         .addGap(0, 19, Short.MAX_VALUE))
                     .addComponent(feedbackPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(feedbackPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
         );
 
         pack();
@@ -275,12 +321,20 @@ public class FeedbackGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+<<<<<<< HEAD:src/returndepositschemeapp/FeedbackGUI.java
         // Setting Locator visible
        // DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
         //machines.setVisible(true);
         // Setting FeedbackGUI invisible
         //Collapsing current form
         //setVisible(false);
+=======
+        //Setting DepositMachineLocator Gui visible
+        DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+        dmlg.setVisible(true);
+        
+        setVisible(false);
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Feedback.java
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed

@@ -11,6 +11,9 @@ import java.util.ArrayList;
  */
 public class DeleteDepositFrame extends javax.swing.JFrame {
     private UserDeposits userDeposits;
+    
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
 
     /**
      * Creates new form DeleteDepositFrame
@@ -97,10 +100,10 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(237, 237, 237)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(entEirLbl)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(255, 255, 255)
@@ -152,9 +155,7 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
             }
         });
 
-        depositBTN.setBackground(new java.awt.Color(51, 51, 51));
         depositBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        depositBTN.setForeground(new java.awt.Color(255, 255, 255));
         depositBTN.setText("Deposit");
         depositBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,9 +265,9 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void machineLocatorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_machineLocatorBtnActionPerformed
-        //Setting Deposit Machin Gui visible
-        //DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        //machines.setVisible(true);
+        //Setting DepositMachineLocator Gui visible
+        DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+        dmlg.setVisible(true);
 
         //Collapsing current form
         setVisible(false);

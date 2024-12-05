@@ -9,8 +9,14 @@ import javax.swing.JOptionPane;
 /**
  * @author Darren
  */
+<<<<<<< HEAD:src/returndepositschemeapp/ProfileGUI.java
 public class ProfileGUI extends javax.swing.JFrame {
 
+=======
+public class Profile extends javax.swing.JFrame {
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Profile.java
     
     /**
      * Creates new form Profile
@@ -101,9 +107,7 @@ public class ProfileGUI extends javax.swing.JFrame {
             }
         });
 
-        profileBtn.setBackground(new java.awt.Color(51, 51, 51));
         profileBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        profileBtn.setForeground(new java.awt.Color(255, 255, 255));
         profileBtn.setText("Profile");
         profileBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,12 +309,11 @@ public class ProfileGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Setting Deposit Machine page visible
-       // DepositMachineLocatorGUI machines = new DepositMachineLocatorGUI();
-        //machines.setVisible(true);
-        // Set invisible
-        //Collapsing current form
-        //setVisible(false);
+        //Setting DepositMachineLocator Gui visible
+        DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+        dmlg.setVisible(true);
+        
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed

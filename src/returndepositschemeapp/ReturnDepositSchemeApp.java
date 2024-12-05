@@ -10,7 +10,7 @@ import java.io.*;
 
 /**
  *
- * @author dbrod
+ * @author danielbroderick, darrenwalsh & seamusmcmenamy
  */
 public class ReturnDepositSchemeApp {
 
@@ -25,34 +25,39 @@ public class ReturnDepositSchemeApp {
         // Initialize CSV file for users
         AppInitializer.initializeCSV(); 
 
-        //Initialising the Gui for DepositMachineLocatorGUI
-
-        //Creating an instance of FindClosestMachine class
-        FindClosestMachine machineFinder = new FindClosestMachine();
+        //Creating an instance of DepositLocationManager class
+        DepositLocationManager machineFinder = new DepositLocationManager();
         
         //Executing initializeLocations method in the instance machineFinder
         machineFinder.initializeLocations();
         
+        //Allowing all gui classes to access DepositLocationManager
+        DepositLocationManager.getInstanceFCM().initializeLocations();
+        
         //Initialising the Gui
-
         SwingUtilities.invokeLater(() -> {
+<<<<<<< HEAD
             //Initialiasing WelcomeGUI Gui
             WelcomeGUI gui = new WelcomeGUI();
+=======
+            //Initialiasing Welcome Gui
+            Welcome gui = new Welcome();
+            gui.setVisible(true);
+            
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61
             //Initialising dmlg and passing through machineFinderInstance
             DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
-            dmlg.setVisible(true);
+            dmlg.setVisible(false);
             
             //Initialising dm and passing through machineFinderInstance
-            DepositMachines dm = new DepositMachines(machineFinder);
+            DepositMachineLocationsGUI dm = new DepositMachineLocationsGUI(machineFinder);
             dm.setVisible(false);
 
-
-            gui.setVisible(false);
+            //Initialising home and passing through machineFinderInstance
+            Homepage home = new Homepage();
+            home.setVisible(false);
         });
         System.out.print("");
-
-            //Setting it visible
-            //gui.setVisible(false);
             
  
     }

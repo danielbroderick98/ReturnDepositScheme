@@ -25,8 +25,10 @@ import returndepositschemeapp.UserDeposits;
  * @author Seamus90
  */
 public class DepositHistoryFrame extends javax.swing.JFrame {
-     private UserDeposits usersDeposits;
+    private UserDeposits usersDeposits;
 
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
     
     /**
      * Creates new form DepositHistoryFrame
@@ -177,9 +179,7 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
             }
         });
 
-        depositBTN.setBackground(new java.awt.Color(51, 51, 51));
         depositBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        depositBTN.setForeground(new java.awt.Color(255, 255, 255));
         depositBTN.setText("Deposit");
         depositBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,7 +289,9 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        //Setting DepositMachineLocator Gui visible
+        DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+        dmlg.setVisible(true);
         
         //Collapsing current form
         setVisible(false); 
