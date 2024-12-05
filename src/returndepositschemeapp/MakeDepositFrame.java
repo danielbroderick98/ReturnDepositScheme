@@ -7,14 +7,8 @@ package returndepositschemeapp;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import returndepositschemeapp.Deposit;
-<<<<<<< HEAD
 import returndepositschemeapp.DepositCsvManager;
-import returndepositschemeapp.Profile;
-=======
-import returndepositschemeapp.DepositCSVReader;
-import returndepositschemeapp.DepositCSVWriter;
 import returndepositschemeapp.ProfileGUI;
->>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
 import returndepositschemeapp.UserDeposits;
 
 /**

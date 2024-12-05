@@ -11,24 +11,21 @@ import java.util.ArrayList;
  */
 public class UpdateDepostFrame extends javax.swing.JFrame {
     private UserDeposits userDeposits;
-<<<<<<< HEAD
     private DepositCsvManager depositCsvManager;
-=======
-    
+
     //This allows all the access of FindClosestMachine
     DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
     
->>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
     /**
      * Creates new form UpdateDepostForm
      */
     public UpdateDepostFrame() {
         initComponents();
         // get current user
-        User currentUser = UserManager.getCurrentUser();
+        //User currentUser = UserManager.getCurrentUser();
         // store current users email
-        String currentUserEmail = currentUser.getEmail();
-        
+        //String currentUserEmail = currentUser.getEmail();
+        String currentUserEmail = "email2@example.com";
         // initialising depositcsvmanager object 
         this.depositCsvManager = new DepositCsvManager();
         

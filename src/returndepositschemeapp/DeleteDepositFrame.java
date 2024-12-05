@@ -4,21 +4,21 @@
  */
 package returndepositschemeapp;
 import java.util.ArrayList;
+import returndepositschemeapp.UserManager;
 
 /**
  *
  * @author Seamus McMenamy
- * gui that allows user to select a deposit id and then delete deposit based on that id
+ * that allows user to select a deposit id and then delete deposit based on that id
  */
 public class DeleteDepositFrame extends javax.swing.JFrame {
     private UserDeposits userDeposits;
-<<<<<<< HEAD
+
     private DepositCsvManager depositCsvManager;
-=======
-    
+
     //This allows all the access of FindClosestMachine
     DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
->>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
+
 
     /**
      * Creates new form DeleteDepositFrame
@@ -26,33 +26,34 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
     public DeleteDepositFrame() {
         initComponents();
         // get current user that is logged in
-        User currentUser = UserManager.getCurrentUser();
+        //User currentUser = UserManager.getCurrentUser();
         // store current users email
-        String currentUserEmail = currentUser.getEmail();
-        
-        // initialising depositcsvmanager  
+        //String currentUserEmail = currentUser.getEmail();
+        String currentUserEmail = "email2@example.com";
+
+        // initialising depositcsvmanager
         this.depositCsvManager = new DepositCsvManager();
-        
+
         // get users deposits from csv
         ArrayList<Deposit> userDepositsList = this.depositCsvManager.readUserDeposits(currentUserEmail);
-        
+
         // initialise userdeposits
         this.userDeposits = new UserDeposits(currentUserEmail, userDepositsList);
-        
-        // clear default drop down items 
+
+        // clear default drop down items
         jComboBox1.removeAllItems();
-        
-        // populate dropdown
+
+        // populate dropdon
         populateDepositComboBox();
     }
-    
+
     // merhod to populate the combobox with depositIdS
     public void populateDepositComboBox() {
          jComboBox1.removeAllItems();
-        
+
         // get the ids of all the items in arraylist
         ArrayList<Integer> depositIdsList = userDeposits.getDepositIds();
-        
+
         // populate dropdown with IDs
         for (Integer depositId : depositIdsList) {
             jComboBox1.addItem(String.valueOf(depositId));
@@ -115,12 +116,12 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-<<<<<<< HEAD
+
                 .addGap(229, 229, 229)
                 .addComponent(deleteDepositBtn)
                 .addGap(29, 29, 29)
                 .addComponent(backToDepositMenuBtn)
-=======
+
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(237, 237, 237)
@@ -128,9 +129,8 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(entEirLbl)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jButton1)))
->>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
+                        ))
+
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -313,26 +313,26 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
     // method to delete deposit when button is clicked
     private void deleteDepositBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDepositBtnActionPerformed
         // TODO add your handling code here:
-        // take in drop down item 
+        // take in drop down item
         String selectedItem = (String) jComboBox1.getSelectedItem();
-        
+
         // convert the string id to an int
         int depositIdToBeDeleted = Integer.parseInt((String) jComboBox1.getSelectedItem());
-        
+
         // delete deposit in userdeposits based on id
         userDeposits.deleteDeposit(depositIdToBeDeleted);
-        
+
         // delete deposit from csv based on id
         depositCsvManager.deleteDepositCsv(depositIdToBeDeleted);
-        
+
         // refresh dropdown
         populateDepositComboBox();
         // message on successful deletion
         javax.swing.JOptionPane.showMessageDialog(this, "Deposit Successfully deleted!");
-        
+
     }//GEN-LAST:event_deleteDepositBtnActionPerformed
 
-    // bring user back to depositmenu 
+    // bring user back to depositmenu
     private void backToDepositMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToDepositMenuBtnActionPerformed
         // TODO add your handling code here:
         DepositMenuFrame depositMenu = new DepositMenuFrame();
@@ -348,7 +348,7 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

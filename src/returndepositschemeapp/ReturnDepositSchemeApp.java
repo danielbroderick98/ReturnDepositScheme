@@ -48,14 +48,12 @@ public class ReturnDepositSchemeApp {
             DepositMachineLocationsGUI dm = new DepositMachineLocationsGUI(machineFinder);
             dm.setVisible(false);
 
-<<<<<<< HEAD
 
             gui.setVisible(true);
-=======
+
             //Initialising home and passing through machineFinderInstance
             HomepageGUI home = new HomepageGUI();
             home.setVisible(false);
->>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
         });
         System.out.print("");
             

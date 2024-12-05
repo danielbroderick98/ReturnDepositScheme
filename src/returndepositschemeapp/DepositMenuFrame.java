@@ -15,11 +15,9 @@ import returndepositschemeapp.ProfileGUI;
  * acts as home page for deposits, allows navigation to other pages
  */
 public class DepositMenuFrame extends javax.swing.JFrame {
-<<<<<<< HEAD
-=======
+
     //This allows all the access of FindClosestMachine
     DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
->>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
     
     /**
      * Creates new form DepositFrameMenu
@@ -349,7 +347,7 @@ public class DepositMenuFrame extends javax.swing.JFrame {
     // goes back to the home page
     private void toHomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toHomeBtnActionPerformed
         // TODO add your handling code here:
-        Homepage homepage = new Homepage();
+        HomepageGUI homepage = new HomepageGUI();
         homepage.setVisible(true);
         
         //Collapsing current form
