@@ -12,12 +12,12 @@ import returndepositschemeapp.DepositMachineLocatorGUI;
 import returndepositschemeapp.DepositMachineLocatorGUI;
 import returndepositschemeapp.DepositMenuFrame;
 import returndepositschemeapp.DepositMenuFrame;
-import returndepositschemeapp.Feedback;
-import returndepositschemeapp.Feedback;
-import returndepositschemeapp.Homepage;
-import returndepositschemeapp.Homepage;
-import returndepositschemeapp.Profile;
-import returndepositschemeapp.Profile;
+import returndepositschemeapp.FeedbackGUI;
+import returndepositschemeapp.FeedbackGUI;
+import returndepositschemeapp.HomepageGUI;
+import returndepositschemeapp.HomepageGUI;
+import returndepositschemeapp.ProfileGUI;
+import returndepositschemeapp.ProfileGUI;
 import returndepositschemeapp.UserDeposits;
 import returndepositschemeapp.UserDeposits;
 /**
@@ -263,7 +263,7 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         //Setting hompeage visible
-        Homepage home = new Homepage();
+        HomepageGUI home = new HomepageGUI();
         home.setVisible(true);
         
         //Collapsing current form
@@ -272,7 +272,7 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
-        Feedback feedback = new Feedback();
+        FeedbackGUI feedback = new FeedbackGUI();
         feedback.setVisible(true);
         
         //Collapsing current form
@@ -299,7 +299,7 @@ public class DepositHistoryFrame extends javax.swing.JFrame {
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
         //Setting the profile visible
-        Profile profile = new Profile();
+        ProfileGUI profile = new ProfileGUI();
         profile.setVisible(true);
         
         //Collapsing current form

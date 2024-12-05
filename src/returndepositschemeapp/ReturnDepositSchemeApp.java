@@ -37,7 +37,7 @@ public class ReturnDepositSchemeApp {
         //Initialising the Gui
         SwingUtilities.invokeLater(() -> {
             //Initialiasing Welcome Gui
-            Welcome gui = new Welcome();
+            WelcomeGUI gui = new WelcomeGUI();
             gui.setVisible(true);
             
             //Initialising dmlg and passing through machineFinderInstance
@@ -49,7 +49,7 @@ public class ReturnDepositSchemeApp {
             dm.setVisible(false);
 
             //Initialising home and passing through machineFinderInstance
-            Homepage home = new Homepage();
+            HomepageGUI home = new HomepageGUI();
             home.setVisible(false);
         });
         System.out.print("");
