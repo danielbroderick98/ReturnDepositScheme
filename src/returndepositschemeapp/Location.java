@@ -6,7 +6,7 @@ package returndepositschemeapp;
 
 /**
  *
- * @author dbrod
+ * @author danielbroderick
  */
 
 //Location class is an Abstract class
@@ -24,7 +24,7 @@ public abstract class Location {
         this.eircode = eircode;
     }
     
-    //***-Start of Getters & Setters-***
+    //***-Start of Getters-***
     // Getters
     public double getLatitude() {
         return latitude;
@@ -38,17 +38,5 @@ public abstract class Location {
         return eircode;
     }
 
-    // Setters
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public void setEircode(String eircode) {
-        this.eircode = eircode;
-    }
-    //***-End of Getters & Setters-***
+    //***-End of Getters-***
 }

@@ -4,10 +4,10 @@
  */
 package returndepositschemeapp;
 
-import returndepositschemeapp.Feedback;
-import returndepositschemeapp.Homepage;
+import returndepositschemeapp.FeedbackGUI;
+import returndepositschemeapp.HomepageGUI;
 import returndepositschemeapp.MakeDepositFrame;
-import returndepositschemeapp.Profile;
+import returndepositschemeapp.ProfileGUI;
 
 /**
  *
@@ -15,6 +15,11 @@ import returndepositschemeapp.Profile;
  * acts as home page for deposits, allows navigation to other pages
  */
 public class DepositMenuFrame extends javax.swing.JFrame {
+<<<<<<< HEAD
+=======
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
+>>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
     
     /**
      * Creates new form DepositFrameMenu
@@ -169,9 +174,7 @@ public class DepositMenuFrame extends javax.swing.JFrame {
             }
         });
 
-        depositBTN.setBackground(new java.awt.Color(51, 51, 51));
         depositBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        depositBTN.setForeground(new java.awt.Color(255, 255, 255));
         depositBTN.setText("Deposit");
         depositBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +258,7 @@ public class DepositMenuFrame extends javax.swing.JFrame {
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         //Setting hompeage visible
-        Homepage home = new Homepage();
+        HomepageGUI home = new HomepageGUI();
         home.setVisible(true);
         
         //Collapsing current form
@@ -281,7 +284,7 @@ public class DepositMenuFrame extends javax.swing.JFrame {
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
-        Feedback feedback = new Feedback();
+        FeedbackGUI feedback = new FeedbackGUI();
         feedback.setVisible(true);
         
         //Collapsing current form
@@ -298,7 +301,9 @@ public class DepositMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        //Setting DepositMachineLocator Gui visible
+        DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+        dmlg.setVisible(true);
         
         //Collapsing current form
         setVisible(false);

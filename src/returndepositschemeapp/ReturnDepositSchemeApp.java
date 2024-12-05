@@ -10,7 +10,7 @@ import java.io.*;
 
 /**
  *
- * @author dbrod
+ * @author danielbroderick, darrenwalsh & seamusmcmenamy
  */
 public class ReturnDepositSchemeApp {
 
@@ -25,34 +25,39 @@ public class ReturnDepositSchemeApp {
         // Initialize CSV file for users
         AppInitializer.initializeCSV(); 
 
-        //Initialising the Gui for DepositMachineLocatorGUI
-
-        //Creating an instance of FindClosestMachine class
-        FindClosestMachine machineFinder = new FindClosestMachine();
+        //Creating an instance of DepositLocationManager class
+        DepositLocationManager machineFinder = new DepositLocationManager();
         
         //Executing initializeLocations method in the instance machineFinder
         machineFinder.initializeLocations();
         
+        //Allowing all gui classes to access DepositLocationManager
+        DepositLocationManager.getInstanceFCM().initializeLocations();
+        
         //Initialising the Gui
-
         SwingUtilities.invokeLater(() -> {
             //Initialiasing Welcome Gui
-            Welcome gui = new Welcome();
+            WelcomeGUI gui = new WelcomeGUI();
+            gui.setVisible(true);
+            
             //Initialising dmlg and passing through machineFinderInstance
             DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
             dmlg.setVisible(false);
             
             //Initialising dm and passing through machineFinderInstance
-            DepositMachines dm = new DepositMachines(machineFinder);
+            DepositMachineLocationsGUI dm = new DepositMachineLocationsGUI(machineFinder);
             dm.setVisible(false);
 
+<<<<<<< HEAD
 
             gui.setVisible(true);
+=======
+            //Initialising home and passing through machineFinderInstance
+            HomepageGUI home = new HomepageGUI();
+            home.setVisible(false);
+>>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
         });
         System.out.print("");
-
-            //Setting it visible
-            //gui.setVisible(false);
             
  
     }

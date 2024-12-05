@@ -7,8 +7,14 @@ package returndepositschemeapp;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import returndepositschemeapp.Deposit;
+<<<<<<< HEAD
 import returndepositschemeapp.DepositCsvManager;
 import returndepositschemeapp.Profile;
+=======
+import returndepositschemeapp.DepositCSVReader;
+import returndepositschemeapp.DepositCSVWriter;
+import returndepositschemeapp.ProfileGUI;
+>>>>>>> 07465ba732993a9b5b6e1c3688aaaa14e3991090
 import returndepositschemeapp.UserDeposits;
 
 /**
@@ -17,6 +23,8 @@ import returndepositschemeapp.UserDeposits;
  * Allows user to make deposits in the app
  */
 public class MakeDepositFrame extends javax.swing.JFrame {
+    //This allows all the access of FindClosestMachine
+    DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
 
     private UserDeposits usersDeposits;
     private DepositCsvManager depositCsvManager;
@@ -169,9 +177,7 @@ public class MakeDepositFrame extends javax.swing.JFrame {
             }
         });
 
-        depositBTN.setBackground(new java.awt.Color(51, 51, 51));
         depositBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        depositBTN.setForeground(new java.awt.Color(255, 255, 255));
         depositBTN.setText("Deposit");
         depositBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +261,7 @@ public class MakeDepositFrame extends javax.swing.JFrame {
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         //Setting hompeage visible
-        Homepage home = new Homepage();
+        HomepageGUI home = new HomepageGUI();
         home.setVisible(true);
         
         //Collapsing current form
@@ -272,7 +278,7 @@ public class MakeDepositFrame extends javax.swing.JFrame {
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
         //Setting Feedback visible
-        Feedback feedback = new Feedback();
+        FeedbackGUI feedback = new FeedbackGUI();
         feedback.setVisible(true);
         
         //Collapsing current form
@@ -289,7 +295,9 @@ public class MakeDepositFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_depositBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        //Setting DepositMachineLocator Gui visible
+        DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+        dmlg.setVisible(true);
         
         //Collapsing current form
         setVisible(false);
