@@ -48,6 +48,9 @@ public class ReturnDepositSchemeApp {
             DepositMachineLocationsGUI dm = new DepositMachineLocationsGUI(machineFinder);
             dm.setVisible(false);
 
+
+            gui.setVisible(true);
+
             //Initialising home and passing through machineFinderInstance
             HomepageGUI home = new HomepageGUI();
             home.setVisible(false);
