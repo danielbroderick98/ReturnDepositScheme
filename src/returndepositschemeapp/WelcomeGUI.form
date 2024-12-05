@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="welcomePanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -34,14 +34,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="welcomePanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="welcomePanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
@@ -53,18 +53,18 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="109" max="32767" attributes="0"/>
-                  <Component id="registerButton" min="-2" pref="382" max="-2" attributes="0"/>
+                  <Component id="registerBtn" min="-2" pref="382" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
-                          <Component id="loginButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="loginBtn" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                          <Component id="welcomeLabel" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="welcomeLbl" min="-2" pref="237" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -75,39 +75,36 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                  <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="welcomeLbl" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="registerButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="registerBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="loginButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="loginBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="104" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="java.awt.Label" name="welcomeLabel">
+        <Component class="java.awt.Label" name="welcomeLbl">
           <Properties>
             <Property name="text" type="java.lang.String" value="Welcome to Return Deposit Scheme App"/>
           </Properties>
         </Component>
-        <Component class="java.awt.Button" name="registerButton">
+        <Component class="java.awt.Button" name="registerBtn">
           <Properties>
             <Property name="label" type="java.lang.String" value="Please click here to REGISTER"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="java.awt.Button" name="loginButton">
+        <Component class="java.awt.Button" name="loginBtn">
           <Properties>
             <Property name="label" type="java.lang.String" value="LOGIN"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[53, 24]"/>
-            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

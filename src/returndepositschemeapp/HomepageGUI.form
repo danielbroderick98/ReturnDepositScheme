@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="homepagePanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -34,23 +34,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="homepagePanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="homepagePanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
-        </Property>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[527, 333]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[527, 333]"/>
         </Property>
       </Properties>
 
@@ -60,19 +54,19 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="locatorButton" min="-2" pref="158" max="-2" attributes="0"/>
-                      <Component id="feedbackButton" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="locatorBtn" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="feedbackBtn" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="87" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="depositButton" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
-                      <Component id="profileButton" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="depositBtn" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="profileBtn" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -82,63 +76,60 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="59" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="depositButton" min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="feedbackButton" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="depositBtn" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="feedbackBtn" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="locatorButton" min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="profileButton" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="locatorBtn" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="profileBtn" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="java.awt.Button" name="feedbackButton">
+        <Component class="java.awt.Button" name="feedbackBtn">
           <Properties>
             <Property name="label" type="java.lang.String" value="FEEDBACK"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="feedbackButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="feedbackBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="java.awt.Button" name="locatorButton">
+        <Component class="java.awt.Button" name="locatorBtn">
           <Properties>
             <Property name="label" type="java.lang.String" value="MACHINE LOCATOR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locatorButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locatorBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="java.awt.Button" name="depositButton">
+        <Component class="java.awt.Button" name="depositBtn">
           <Properties>
             <Property name="label" type="java.lang.String" value="DEPOSIT"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="java.awt.Button" name="profileButton">
+        <Component class="java.awt.Button" name="profileBtn">
           <Properties>
             <Property name="label" type="java.lang.String" value="PROFILE"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[67, 24]"/>
-            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="java.awt.Button" name="logoutButton">
+        <Component class="java.awt.Button" name="logoutBtn">
           <Properties>
             <Property name="label" type="java.lang.String" value="LOGOUT"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

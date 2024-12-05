@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import returndepositschemeapp.Deposit;
 import returndepositschemeapp.DepositCSVReader;
 import returndepositschemeapp.DepositCSVWriter;
-import returndepositschemeapp.Profile;
+import returndepositschemeapp.ProfileGUI;
 import returndepositschemeapp.UserDeposits;
 
 /**
@@ -247,7 +247,7 @@ public class MakeDepositFrame extends javax.swing.JFrame {
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         //Setting hompeage visible
-        Homepage home = new Homepage();
+        HomepageGUI home = new HomepageGUI();
         home.setVisible(true);
         
         //Collapsing current form
@@ -259,8 +259,8 @@ public class MakeDepositFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
-        //Setting Feedback visible
-        Feedback feedback = new Feedback();
+        //Setting FeedbackGUI visible
+        FeedbackGUI feedback = new FeedbackGUI();
         feedback.setVisible(true);
         
         //Collapsing current form

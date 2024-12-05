@@ -9,20 +9,25 @@ import javax.swing.JOptionPane;
 /**
  * @author Darren
  */
+<<<<<<< HEAD:src/returndepositschemeapp/ProfileGUI.java
+public class ProfileGUI extends javax.swing.JFrame {
+
+=======
 public class Profile extends javax.swing.JFrame {
     //This allows all the access of FindClosestMachine
     DepositLocationManager machineFinder = DepositLocationManager.getInstanceFCM();
+>>>>>>> 62f7eaf61e5dcc46d84e51c41e341dde331afe61:src/returndepositschemeapp/Profile.java
     
     /**
      * Creates new form Profile
      */
-    public Profile() {
+    public ProfileGUI() {
         initComponents();
         // Calls method
         loadUserProfile();
     }
 
-    // Populates users information in 'Profile' window
+    // Populates users information in 'ProfileGUI' window
     private void loadUserProfile() {
         User currentUser = UserManager.getCurrentUser();
         profileNameInput.setText(currentUser.getName());
@@ -46,15 +51,15 @@ public class Profile extends javax.swing.JFrame {
         depositBTN = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         profileBtn = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        saveProfile = new java.awt.Button();
+        profilePanel = new javax.swing.JPanel();
+        saveProfileBtn = new java.awt.Button();
         profileEmailInput = new java.awt.TextField();
         profileNameInput = new java.awt.TextField();
         profileHomeInput = new java.awt.TextField();
-        profileHomeLabel = new java.awt.Label();
-        profileEmailLabel = new java.awt.Label();
-        profileSurnameLabel = new java.awt.Label();
-        profileNameLabel = new java.awt.Label();
+        profileHomeLbl = new java.awt.Label();
+        profileEmailLbl = new java.awt.Label();
+        profileSurnameLbl = new java.awt.Label();
+        profileNameLbl = new java.awt.Label();
         profileSurnameInput = new java.awt.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,12 +145,12 @@ public class Profile extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        profilePanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        saveProfile.setLabel("SAVE");
-        saveProfile.addActionListener(new java.awt.event.ActionListener() {
+        saveProfileBtn.setLabel("SAVE");
+        saveProfileBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveProfileActionPerformed(evt);
+                saveProfileBtnActionPerformed(evt);
             }
         });
 
@@ -155,72 +160,72 @@ public class Profile extends javax.swing.JFrame {
 
         profileHomeInput.setText("Enter Your Home Address...");
 
-        profileHomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        profileHomeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        profileHomeLabel.setText("Home Address");
+        profileHomeLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        profileHomeLbl.setForeground(new java.awt.Color(255, 255, 255));
+        profileHomeLbl.setText("Home Address");
 
-        profileEmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        profileEmailLabel.setForeground(new java.awt.Color(255, 255, 255));
-        profileEmailLabel.setText("Email Address");
+        profileEmailLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        profileEmailLbl.setForeground(new java.awt.Color(255, 255, 255));
+        profileEmailLbl.setText("Email Address");
 
-        profileSurnameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        profileSurnameLabel.setForeground(new java.awt.Color(255, 255, 255));
-        profileSurnameLabel.setText("Surname");
+        profileSurnameLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        profileSurnameLbl.setForeground(new java.awt.Color(255, 255, 255));
+        profileSurnameLbl.setText("Surname");
 
-        profileNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        profileNameLabel.setForeground(new java.awt.Color(255, 255, 255));
-        profileNameLabel.setText("Name");
+        profileNameLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        profileNameLbl.setForeground(new java.awt.Color(255, 255, 255));
+        profileNameLbl.setText("Name");
 
         profileSurnameInput.setText("Enter your Surname...");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout profilePanelLayout = new javax.swing.GroupLayout(profilePanel);
+        profilePanel.setLayout(profilePanelLayout);
+        profilePanelLayout.setHorizontalGroup(
+            profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, profilePanelLayout.createSequentialGroup()
+                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(profilePanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(saveProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(saveProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(profilePanelLayout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(profileEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(profileHomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(profileSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(profileNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(profileEmailLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profileHomeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profileSurnameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profileNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(profileNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(profileSurnameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(profileHomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(profileEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(62, 62, 62)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        profilePanelLayout.setVerticalGroup(
+            profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, profilePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(profileNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(profileNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profileNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(profileSurnameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profileSurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(profileSurnameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(profileHomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profileHomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(profileHomeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(profileEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(profileEmailLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profileEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(saveProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(saveProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -233,7 +238,7 @@ public class Profile extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -242,14 +247,14 @@ public class Profile extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(profilePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveProfileActionPerformed
+    private void saveProfileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveProfileBtnActionPerformed
         // TODO add your handling code here:
         // Save updated profile information
         String name = profileNameInput.getText();
@@ -270,15 +275,15 @@ public class Profile extends javax.swing.JFrame {
         UserManager.saveUsersToCSV();
         // Update message
         JOptionPane.showMessageDialog(this, "Profile updated");
-        // Show Homepage
-        new Homepage().setVisible(true);
-        // Close Profile page
+        // Show HomepageGUI
+        new HomepageGUI().setVisible(true);
+        // Close ProfileGUI page
         this.setVisible(false);
-    }//GEN-LAST:event_saveProfileActionPerformed
+    }//GEN-LAST:event_saveProfileBtnActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         //Setting hompeage visible
-        Homepage home = new Homepage();
+        HomepageGUI home = new HomepageGUI();
         home.setVisible(true);
 
         // Set invisible
@@ -286,8 +291,8 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackBtnActionPerformed
-        //Setting Feedback visible
-        Feedback feedback = new Feedback();
+        //Setting FeedbackGUI visible
+        FeedbackGUI feedback = new FeedbackGUI();
         feedback.setVisible(true);
 
         // Set invisible
@@ -313,7 +318,7 @@ public class Profile extends javax.swing.JFrame {
 
     private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
         //Setting profile visible
-        Profile profile = new Profile();
+        ProfileGUI profile = new ProfileGUI();
         profile.setVisible(true);
 
         // Set invisible
@@ -337,20 +342,21 @@ public class Profile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProfileGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProfileGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProfileGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProfileGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Profile().setVisible(true);
+                new ProfileGUI().setVisible(true);
             }
         });
     }
@@ -361,16 +367,16 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton profileBtn;
     private java.awt.TextField profileEmailInput;
-    private java.awt.Label profileEmailLabel;
+    private java.awt.Label profileEmailLbl;
     private java.awt.TextField profileHomeInput;
-    private java.awt.Label profileHomeLabel;
+    private java.awt.Label profileHomeLbl;
     private java.awt.TextField profileNameInput;
-    private java.awt.Label profileNameLabel;
+    private java.awt.Label profileNameLbl;
+    private javax.swing.JPanel profilePanel;
     private java.awt.TextField profileSurnameInput;
-    private java.awt.Label profileSurnameLabel;
-    private java.awt.Button saveProfile;
+    private java.awt.Label profileSurnameLbl;
+    private java.awt.Button saveProfileBtn;
     // End of variables declaration//GEN-END:variables
 }
