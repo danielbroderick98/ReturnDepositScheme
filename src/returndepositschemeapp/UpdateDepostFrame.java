@@ -22,10 +22,8 @@ public class UpdateDepostFrame extends javax.swing.JFrame {
     public UpdateDepostFrame() {
         initComponents();
         // get current user
-        //User currentUser = UserManager.getCurrentUser();
-        // store current users email
-        //String currentUserEmail = currentUser.getEmail();
-        String currentUserEmail = "email2@example.com";
+        User currentUser = UserManager.getCurrentUser();
+        String currentUserEmail = currentUser.getEmail();
         // initialising depositcsvmanager object 
         this.depositCsvManager = new DepositCsvManager();
         

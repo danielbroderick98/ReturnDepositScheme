@@ -26,10 +26,9 @@ public class DeleteDepositFrame extends javax.swing.JFrame {
     public DeleteDepositFrame() {
         initComponents();
         // get current user that is logged in
-        //User currentUser = UserManager.getCurrentUser();
+        User currentUser = UserManager.getCurrentUser();
         // store current users email
-        //String currentUserEmail = currentUser.getEmail();
-        String currentUserEmail = "email2@example.com";
+        String currentUserEmail = currentUser.getEmail();
 
         // initialising depositcsvmanager
         this.depositCsvManager = new DepositCsvManager();
