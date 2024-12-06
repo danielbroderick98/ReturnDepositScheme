@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package returndepositschemeapp;
-
+//Importing Java Swing
 import javax.swing.*;
+//Importing File handler
+import java.io.*;
 
 /**
  *
- * @author dbrod
+ * @author danielbroderick, darrenwalsh & seamusmcmenamy
  */
 public class ReturnDepositSchemeApp {
 
@@ -16,10 +18,45 @@ public class ReturnDepositSchemeApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Initialising the Gui for DepositMachineLocatorGUI
+
+        // Call method to load users when app starts
+        UserManager.loadUsersFromCSV();
+
+        // Initialize CSV file for users
+        AppInitializer.initializeCSV(); 
+
+        //Creating an instance of DepositLocationManager class
+        DepositLocationManager machineFinder = new DepositLocationManager();
+        
+        //Executing initializeLocations method in the instance machineFinder
+        machineFinder.initializeLocations();
+        
+        //Allowing all gui classes to access DepositLocationManager
+        DepositLocationManager.getInstanceFCM().initializeLocations();
+        
+        //Initialising the Gui
         SwingUtilities.invokeLater(() -> {
-            DepositMachineLocatorGUI gui = new DepositMachineLocatorGUI();
+            //Initialiasing Welcome Gui
+            WelcomeGUI gui = new WelcomeGUI();
             gui.setVisible(true);
+            
+            //Initialising dmlg and passing through machineFinderInstance
+            DepositMachineLocatorGUI dmlg = new DepositMachineLocatorGUI(machineFinder);
+            dmlg.setVisible(false);
+            
+            //Initialising dm and passing through machineFinderInstance
+            DepositMachineLocationsGUI dm = new DepositMachineLocationsGUI(machineFinder);
+            dm.setVisible(false);
+
+
+            gui.setVisible(true);
+
+            //Initialising home and passing through machineFinderInstance
+            HomepageGUI home = new HomepageGUI();
+            home.setVisible(false);
         });
+        System.out.print("");
+            
+ 
     }
 }
