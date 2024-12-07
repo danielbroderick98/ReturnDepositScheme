@@ -7,6 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * @author Darren
+ */
+
 public class UserManager {
 
     private static final String USER_FILE = "users.csv"; // File to store users
